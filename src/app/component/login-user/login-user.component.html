@@ -1,0 +1,22 @@
+
+<div class="container">
+<form action="/action_page.php" style="width: auto; margin-top: 2cm;  height: auto; border-collapse: unset; margin-left: 23cm; " (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd">
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Login
+      </button>  
+      <a routerLink="/register" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" class="btn btn-link">Register</a>
+  </div>
+  
+  </form>
+</div>

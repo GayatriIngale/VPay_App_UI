@@ -1,0 +1,9 @@
+.masthead {
+    height: auto;
+    min-height: 100vh;
+    background-image: url("src\assets\Images\creditcards.jpg");
+    background-size: cover;
+    overflow-x: auto;
+    background-position: center;
+}
+
