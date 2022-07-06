@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/_modules/user';
 import { RegisterService } from 'src/app/_service/register.service';
 
@@ -10,9 +11,10 @@ import { RegisterService } from 'src/app/_service/register.service';
 })
 export class RegisterUserComponent implements OnInit {
   addUser: any;
-  constructor( private registerService : RegisterService) { }
-
+  constructor(private registerService : RegisterService , private router: Router) { }
+//private registerService : RegisterService, private router: Router
   users: User = new User();
+  //private registerService! : RegisterService
   submitted = false;
 
 
@@ -28,6 +30,9 @@ export class RegisterUserComponent implements OnInit {
     })
   }
   register() {
+
+    console.log("Gayatri");
+    console.log(this.addUser);
     this.submitted = true;
     if (this.addUser.invalid) {
       return this.addUser();
@@ -38,6 +43,8 @@ export class RegisterUserComponent implements OnInit {
         success => alert("Sussessfully Inserted"),
           error => alert("unsuccess")
       );
+
+     this.router.navigate(['login']);
       
     }
   }

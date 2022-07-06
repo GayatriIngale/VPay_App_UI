@@ -13,6 +13,12 @@ export class RegisterService {
   }
 
   registerUser(user : any){
-     return this.http.post(`${this.baseUrl}/vpay/login/loginuser`,user);
+    alert("In service");
+    console.log(user);
+     return this.http.post(`${this.baseUrl}/vpay/login/registerUser`,user);
+  }
+
+  get(){
+    return this.http.get(`${this.baseUrl}/vpay/login/get`);
   }
 }

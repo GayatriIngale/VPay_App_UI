@@ -35,7 +35,7 @@
         
             <label for="userName">User Name<span style="color:red"> *</span></label>
               <input type="text" class="form-control" id="userName" placeholder="User name" [(ngModel)]="users.userName"
-              formControlName="username"  >
+              formControlName="userName"  >
             <div *ngIf="userName.invalid && (userName.touched||submitted)">
         
               <span class="text-danger" *ngIf="userName.errors?.required">User name is required</span>
@@ -50,9 +50,6 @@
                 <span class="text-danger" *ngIf="password.errors?.required">Password required</span>
                 <span class="text-danger" *ngIf="password.errors?.pattern">Please enter password</span>
             </div>
-            
-          
-              
             
             <br>
               <button type="button" class="btn btn-success" (click)="register()">Submit</button>
