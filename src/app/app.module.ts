@@ -6,12 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginUserComponent } from './component/login-user/login-user.component';
 import { RegisterUserComponent } from './component/register-user/register-user.component';
+import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
+import { AddCreditCardsComponent } from './component/add-credit-cards/add-credit-cards.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginUserComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    VPayHomePageComponent,
+    AddCreditCardsComponent
     
   ],
   imports: [

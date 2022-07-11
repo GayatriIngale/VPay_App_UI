@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,15 @@ export class RegisterService {
     this.baseUrl = environment.baseUrl;
   }
 
-  registerUser(user : any){
-    alert("In service");
-    console.log(user);
+  registerUser(user : any)  : Observable<any>{
+    console.log("In service");
+   // console.log(user);
      return this.http.post(`${this.baseUrl}/vpay/login/registerUser`,user);
   }
 
+  
+
   get(){
-    return this.http.get(`${this.baseUrl}/vpay/login/get`);
+    return this.http.get(`${this.baseUrl}/vpay/login/get`, {responseType: 'text'});
   }
 }

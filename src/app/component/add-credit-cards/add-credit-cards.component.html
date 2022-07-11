@@ -1,0 +1,67 @@
+<!-- <div align="center"> -->
+
+  <h1>Total Outstanding</h1>
+    <div class="container">   
+        <form [formGroup]="addCards" >
+
+            <label for="cardNumber">cardNumber<span style="color:red"> *</span></label>
+            <input type="text" class="form-control" id="cardNumber" placeholder="cardNumber" [(ngModel)]="cardDetails.cardNumber" formControlName="cardNumber"  >
+          <div *ngIf="cardNumber.invalid && (cardNumber.touched||submitted)">
+        
+            <span class="text-danger" *ngIf="cardNumber.errors?.required">cardNumber is required</span>
+            <span class="text-danger" *ngIf="cardNumber.errors?.pattern">Please enter cardNumber</span>
+            
+          </div>
+          <br>
+
+          <label for="cvv">cvv<span style="color:red"> *</span></label>
+            <input type="text" class="form-control" id="cvv" placeholder="cvv" [(ngModel)]="cardDetails.cvv" formControlName="cvv"  >
+          <div *ngIf="cvv.invalid && (cvv.touched||submitted)">
+        
+            <span class="text-danger" *ngIf="cvv.errors?.required">cvv is required</span>
+            <span class="text-danger" *ngIf="cvv.errors?.pattern">Please enter cvv</span>
+            
+          </div>
+          <br>
+            <label for="expiryDate">expiryDate<span style="color:red"> *</span></label>
+            <input type="text" class="form-control" id="expiryDate" placeholder="expiryDate" [(ngModel)]="cardDetails.expiryDate" formControlName="expiryDate"  >
+          <div *ngIf="expiryDate.invalid && (expiryDate.touched||submitted)">
+        
+            <span class="text-danger" *ngIf="expiryDate.errors?.required">expiryDate is required</span>
+            <span class="text-danger" *ngIf="expiryDate.errors?.pattern">Please enter expiryDate</span>
+            
+          </div>
+          <br>
+              
+          <label for="mobileNumber">mobileNumber<span style="color:red"> *</span></label>
+            <input type="text" class="form-control" id="mobileNumber" placeholder="mobileNumber"
+              [(ngModel)]="cardDetails.mobileNumber" formControlName="mobileNumber" >
+         
+              <div *ngIf="mobileNumber.invalid && (mobileNumber.touched||submitted)">
+              <span class="text-danger" *ngIf="mobileNumber.errors?.required">mobileNumber required</span>
+              <span class="text-danger" *ngIf="mobileNumber.errors?.pattern">Please enter mobileNumber</span>
+          </div>
+          <br>
+            <label for="userName">User Name<span style="color:red"> *</span></label>
+              <input type="text" class="form-control" id="userName" placeholder="User name" [(ngModel)]="cardDetails.userName"
+              formControlName="userName"  >
+            <div *ngIf="userName.invalid && (userName.touched||submitted)">
+        
+              <span class="text-danger" *ngIf="userName.errors?.required">User name is required</span>
+              <span class="text-danger" *ngIf="userName.errors?.pattern">Please enter user name</span>
+            </div> 
+            <br>
+            
+            <label for="bankName">bankName<span style="color:red"> *</span></label>
+              <input type="text" class="form-control" id="bankName" placeholder="bankName"
+                [(ngModel)]="cardDetails.bankName" formControlName="bankName" >
+           
+                <div *ngIf="bankName.invalid && (bankName.touched||submitted)">
+                <span class="text-danger" *ngIf="bankName.errors?.required">bankName required</span>
+                <span class="text-danger" *ngIf="bankName.errors?.pattern">Please enter bankName</span>
+            </div>
+            <br>
+              <button type="button" class="btn btn-success" (click)="saveCards()">Submit</button>
+           
+            </form>
+          </div>

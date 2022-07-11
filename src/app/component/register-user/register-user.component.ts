@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { User } from 'src/app/_modules/user';
 import { RegisterService } from 'src/app/_service/register.service';
 
@@ -16,7 +17,7 @@ export class RegisterUserComponent implements OnInit {
   users: User = new User();
   //private registerService! : RegisterService
   submitted = false;
-
+   response1 ! : string;
 
  
   ngOnInit(): void {
@@ -29,24 +30,23 @@ export class RegisterUserComponent implements OnInit {
       
     })
   }
-  register() {
+  
 
-    console.log("Gayatri");
-    console.log(this.addUser);
-    this.submitted = true;
-    if (this.addUser.invalid) {
-      return this.addUser();
-    }
-    else {
+  saveUser() {  
+    console.log(this.users);
+    this.registerService.registerUser(this.users)  
+      .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+    this.users= new User();
+    this.router.navigate(['login']);
 
-      this.registerService.registerUser(this.addUser).subscribe(
-        success => alert("Sussessfully Inserted"),
-          error => alert("unsuccess")
-      );
+  }
+  get(){
+    this.registerService.get().subscribe(data =>{
+      this.response1 = data;
 
-     this.router.navigate(['login']);
-      
-    }
+      alert(this.response1);
+     console.log(this.response1);
+    })
   }
 
   get firstName(){
