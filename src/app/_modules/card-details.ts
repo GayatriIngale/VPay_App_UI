@@ -1,18 +1,14 @@
 export class CardDetails {
-    id! : number;
-    cardNumber !: String;
-    cvv !: String;
-    expiryDate !:String;
-    mobileNumber ! : String;
-    userName ! : String;
-    bankName !: String;
+    //id! : number;
+    cardNumber! : String;
+    cardHolderName! : String;
+    bankName! :String;
+    userName! : String;
+    
 }
 
 
-// private long id;
-// 	private String cardNumber;
-// 	private String cvv;
-// 	private String expiryDate;
-// 	private String mobileNumber;
-// 	private String userName;
+// private String cardNumber;
+// 	private  String cardHolderName;
 // 	private String bankName;
+// 	private String userName;

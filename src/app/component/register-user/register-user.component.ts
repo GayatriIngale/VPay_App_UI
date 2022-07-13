@@ -10,6 +10,7 @@ import { RegisterService } from 'src/app/_service/register.service';
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
 })
+
 export class RegisterUserComponent implements OnInit {
   addUser: any;
   constructor(private registerService : RegisterService , private router: Router) { }
@@ -17,7 +18,7 @@ export class RegisterUserComponent implements OnInit {
   users: User = new User();
   //private registerService! : RegisterService
   submitted = false;
-   response1 ! : string;
+   response ! : string;
 
  
   ngOnInit(): void {
@@ -42,10 +43,10 @@ export class RegisterUserComponent implements OnInit {
   }
   get(){
     this.registerService.get().subscribe(data =>{
-      this.response1 = data;
+      this.response = data;
 
-      alert(this.response1);
-     console.log(this.response1);
+      alert(this.response);
+     console.log(this.response);
     })
   }
 

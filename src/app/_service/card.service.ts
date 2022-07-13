@@ -16,4 +16,24 @@ export class CardService {
   addCards(cardDetails : any)  : Observable<any>{
     return this.http.post(`${this.baseUrl}/vpay/card/addCard`,cardDetails);
   }
+
+  totalDue(cardHolderName : string){
+    //console.log("in total due: "+cardHolderName)
+    return this.http.get(`${this.baseUrl}/vPay/banks/totalDue/`+cardHolderName);
+
+  }
+
+  minDue(cardHolderName : string){
+    return this.http.get(`${this.baseUrl}/vPay/banks/minDue/`+cardHolderName);
+
+  }
+
+  cardHolderName(userName : any){
+    return this.http.get(`${this.baseUrl}/vpay/card/cardHolderName/`+userName,{responseType: 'text'} );
+  }
+
+  // getOwnerList(username): Observable<any> {
+   
+  //   return this.http.get(`${this.baseUrl}/api/owner-List/${username}`);
+  // }
 }

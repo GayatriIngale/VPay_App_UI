@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardDetails } from 'src/app/_modules/card-details';
 import { CardService } from 'src/app/_service/card.service';
@@ -17,17 +17,17 @@ export class AddCreditCardsComponent implements OnInit {
   submitted = false;
 
   cardDetails : CardDetails = new CardDetails();
+
   
   ngOnInit(): void {
-    this.addCards = new FormControl({
-      "cardNumber": new FormControl('',Validators.required),
-      "cvv": new FormControl('',Validators.required),
-      "expiryDate": new FormControl('',Validators.required),
-      "mobileNumber": new FormControl('',Validators.required),
+    this.addCards = new FormGroup({
+      "cardNumber": new FormControl('',Validators.required),      
+      "cardHolderName": new FormControl('',Validators.required),
       "userName": new FormControl('',Validators.required),
       "bankName": new FormControl('', Validators.required)
 
     })
+   
   }
 
 
@@ -35,23 +35,19 @@ export class AddCreditCardsComponent implements OnInit {
     console.log(this.cardDetails);
     this.cardService.addCards(this.cardDetails)  
       .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+    this.cardDetails= new CardDetails();
     this.router.navigate(['VPay']);
 
   }
-
+ 
  
 
   get cardNumber(){
     return this.addCards.get('cardNumber');
   }
-  get cvv(){
-    return this.addCards.get('cvv');
-  }
-  get expiryDate(){
-    return this.addCards.get('expiryDate');
-  }
-  get mobileNumber(){
-    return this.addCards.get('mobileNumber');
+  
+  get cardHolderName(){
+    return this.addCards.get('cardHolderName');
   }
   get userName(){
     return this.addCards.get('userName');
@@ -60,4 +56,5 @@ export class AddCreditCardsComponent implements OnInit {
     return this.addCards.get('bankName');
   }
 
+  
 }
