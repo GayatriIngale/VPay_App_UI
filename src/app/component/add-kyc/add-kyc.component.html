@@ -1,0 +1,42 @@
+<!-- <div align="center"> -->
+    <div class="container">   
+        <form [formGroup]="addKyc" >
+
+
+            <label for="adhaarNumber">Adhaar Number<span style="color:red"> *</span></label>
+            <input type="number" class="form-control" id="adhaarNumber" placeholder="adhaarNumber" [(ngModel)]="kycs.uid" formControlName="adhaarNumber"  >
+          <div *ngIf="adhaarNumber.invalid && (adhaarNumber.touched||submitted)">
+        
+            <span class="text-danger" *ngIf="adhaarNumber.errors?.required">Adhhar Number is required</span>
+            <span class="text-danger" *ngIf="adhaarNumber.errors?.pattern">Please enter Adhhar Number</span>
+            
+          </div>
+          <br>
+
+          <label for="panNumber">PAN Number<span style="color:red"> *</span></label>
+            <input type="text" class="form-control" id="panNumber" placeholder="panNumber" [(ngModel)]="kycs.panNumber" formControlName="panNumber"  >
+          <div *ngIf="panNumber.invalid && (panNumber.touched||submitted)">
+        
+            <span class="text-danger" *ngIf="panNumber.errors?.required">PAN Number is required</span>
+            <span class="text-danger" *ngIf="panNumber.errors?.pattern">Please enter PAN Number</span>
+            
+          </div>
+          <br>
+            <label for="salary">Salary<span style="color:red"> *</span></label>
+            <input type="text" class="form-control" id="salary" placeholder="salary" [(ngModel)]="kycs.salary" formControlName="salary"  >
+          <div *ngIf="salary.invalid && (salary.touched||submitted)">
+        
+            <span class="text-danger" *ngIf="salary.errors?.required">salary is required</span>
+            <span class="text-danger" *ngIf="salary.errors?.pattern">please enter salary</span>
+            
+          </div>
+          <br>
+              
+        
+            
+            <br>
+              <button type="button" class="btn btn-success" (click)="submit()">Authenticate Adhaar</button>
+            <button type="reset" class="btn btn-success" >Cancel</button>
+          
+            </form>
+          </div>

@@ -8,6 +8,11 @@ import { LoginUserComponent } from './component/login-user/login-user.component'
 import { RegisterUserComponent } from './component/register-user/register-user.component';
 import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
 import { AddCreditCardsComponent } from './component/add-credit-cards/add-credit-cards.component';
+import { CheckKycComponent } from './component/check-kyc/check-kyc.component';
+import { AddKycComponent } from './component/add-kyc/add-kyc.component';
+import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
+import { ShowoffersComponent } from './showoffers/showoffers.component';
+import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,12 @@ import { AddCreditCardsComponent } from './component/add-credit-cards/add-credit
     LoginUserComponent,
     RegisterUserComponent,
     VPayHomePageComponent,
-    AddCreditCardsComponent
+    AddCreditCardsComponent,
+    CheckKycComponent,
+    AddKycComponent,
+    AuthAdhaarComponent,
+    ShowoffersComponent,
+    AddtowalletComponent
     
   ],
   imports: [

@@ -1,0 +1,20 @@
+<div *ngIf ="isSubmitted">Please accept terms and conditions to add Money to vpay wallet
+    <div  class="form-group">
+
+    <input type="checkbox" id="terms" name="terms" value="terms">
+<label for="terms"> I accept terms and conditions</label><br>
+<button type="submit" (click)="next()" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+    Next
+</button>  
+</div>
+</div>
+
+<div *ngIf ="isNext"><p> Added to the Vpay Wallet {{response}}</p>
+    <!-- <div  class="form-group">
+
+    <input type="checkbox" id="terms" name="terms" value="terms">
+<label for="terms"> I accept terms and conditions</label><br>
+<button type="submit" (click)="next()" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+    Next
+</button>   -->
+</div>
