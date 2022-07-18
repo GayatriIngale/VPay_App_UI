@@ -37,4 +37,14 @@ export class CardService {
    
   //   return this.http.get(`${this.baseUrl}/api/owner-List/${username}`);
   // }
+
+
+  // listOfCards(mobileNumber) Observable<any> {
+  //   return this.http.get(`${this.baseUrl}/api/owner-List/${mobileNumber}`);
+  // }
+
+  listOfCards(mobileNumber: string | null): Observable<any> {
+   
+    return this.http.get(`${this.baseUrl}/vpay/card/allCards/${mobileNumber}`);
+  }
 }
