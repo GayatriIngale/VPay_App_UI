@@ -30,6 +30,19 @@
             <span class="text-danger" *ngIf="emailId.errors?.pattern">Please enter email</span>
             
           </div>
+
+          <br>
+              
+        
+            <label for="mobileNumber">mobileNumber<span style="color:red"> *</span></label>
+              <input type="text" class="form-control" id="mobileNumber" placeholder="mobileNumber" [(ngModel)]="users.mobileNumber"
+              formControlName="mobileNumber"  >
+            <div *ngIf="mobileNumber.invalid && (mobileNumber.touched||submitted)">
+        
+              <span class="text-danger" *ngIf="mobileNumber.errors?.required">mobileNumber is required</span>
+              <span class="text-danger" *ngIf="mobileNumber.errors?.pattern">Please enter mobileNumber</span>
+            </div> 
+
           <br>
               
         
@@ -52,8 +65,7 @@
             </div>
             
             <br>
-              <button type="button" class="btn btn-success" (click)="saveUser()">Submit</button>
-            <button type="button" class="btn btn-success" (click)="get()">Check</button>
+              <button type="button" class="btn btn-success" (click)="saveUser()">Sign In</button>
           
             </form>
           </div>

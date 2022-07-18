@@ -18,17 +18,19 @@ export class VPayHomePageComponent implements OnInit {
   ngOnInit(): void {
 
  let username = localStorage.getItem("username");
- this.cardService.cardHolderName(username).subscribe(data =>{
-
+ this.cardService.mobileNumber(username).subscribe(data =>{
+  localStorage.setItem('mobileNumber', data);
   if(data!== ""){
     console.log("CardHolderName: "+data)
     this.cardHolderName = data;
     
     this.cardService.totalDue(this.cardHolderName).subscribe(data =>{
       if(data!=null){
+        console.log("not null");
         this.totalDue= data;
       }
       else{
+        console.log(" null");
         this.totalDue= 0;
       }
       })

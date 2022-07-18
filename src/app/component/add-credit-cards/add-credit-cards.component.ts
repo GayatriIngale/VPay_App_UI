@@ -15,6 +15,7 @@ export class AddCreditCardsComponent implements OnInit {
  
   addCards : any;
   submitted = false;
+  
 
   cardDetails : CardDetails = new CardDetails();
 
@@ -23,18 +24,21 @@ export class AddCreditCardsComponent implements OnInit {
     this.addCards = new FormGroup({
       "cardNumber": new FormControl('',Validators.required),      
       "cardHolderName": new FormControl('',Validators.required),
-      "userName": new FormControl('',Validators.required),
+      // "userName": new FormControl('',Validators.required),
       "bankName": new FormControl('', Validators.required)
 
     })
    
+    //let username = localStorage.getItem("username");
   }
 
 
   saveCards() {  
     console.log(this.cardDetails);
-    this.cardService.addCards(this.cardDetails)  
-      .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+
+//alert(localStorage.getItem("panNumber"));
+    this.cardService.addCards(this.cardDetails,localStorage.getItem("mobileNumber"))  
+      .subscribe((data: any) => alert(data), (error: any) => console.log(error));  
     this.cardDetails= new CardDetails();
     this.router.navigate(['VPay']);
 

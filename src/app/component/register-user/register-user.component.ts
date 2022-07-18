@@ -27,7 +27,8 @@ export class RegisterUserComponent implements OnInit {
       "lastName": new FormControl('',Validators.required),
       "emailId": new FormControl('',Validators.required),
       "password": new FormControl('',Validators.required),
-      "userName": new FormControl('',Validators.required)
+      "userName": new FormControl('',Validators.required),
+      "mobileNumber": new FormControl('',Validators.required)
       
     })
   }
@@ -36,19 +37,12 @@ export class RegisterUserComponent implements OnInit {
   saveUser() {  
     console.log(this.users);
     this.registerService.registerUser(this.users)  
-      .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+      .subscribe((data: any) => alert(data), (error: any) => console.log(error));  
     this.users= new User();
     this.router.navigate(['login']);
 
   }
-  get(){
-    this.registerService.get().subscribe(data =>{
-      this.response = data;
-
-      alert(this.response);
-     console.log(this.response);
-    })
-  }
+  
 
   get firstName(){
     return this.addUser.get('firstName');
@@ -64,6 +58,10 @@ export class RegisterUserComponent implements OnInit {
   }
   get userName(){
     return this.addUser.get('userName');
+  }
+
+  get mobileNumber(){
+    return this.addUser.get('mobileNumber');
   }
 
 }

@@ -3,7 +3,7 @@ export class CardDetails {
     cardNumber! : String;
     cardHolderName! : String;
     bankName! :String;
-    userName! : String;
+    //userName! : String;
     
 }
 

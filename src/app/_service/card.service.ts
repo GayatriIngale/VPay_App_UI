@@ -13,23 +13,24 @@ export class CardService {
     this.baseUrl = environment.baseUrl;
   }
 
-  addCards(cardDetails : any)  : Observable<any>{
-    return this.http.post(`${this.baseUrl}/vpay/card/addCard`,cardDetails);
+  addCards(cardDetails : any,  panNumber :any )  : Observable<any>{
+    return this.http.post(`${this.baseUrl}/vpay/card/save/`+panNumber,cardDetails,{responseType: 'text'} );
   }
 
   totalDue(cardHolderName : string){
     //console.log("in total due: "+cardHolderName)
-    return this.http.get(`${this.baseUrl}/vPay/banks/totalDue/`+cardHolderName);
+   // alert("In service: "+cardHolderName);
+    return this.http.get(`${this.baseUrl}/vPay/lender/totalDue/`+cardHolderName);
 
   }
 
   minDue(cardHolderName : string){
-    return this.http.get(`${this.baseUrl}/vPay/banks/minDue/`+cardHolderName);
+    return this.http.get(`${this.baseUrl}/vPay/lender/minDue/`+cardHolderName);
 
   }
 
-  cardHolderName(userName : any){
-    return this.http.get(`${this.baseUrl}/vpay/card/cardHolderName/`+userName,{responseType: 'text'} );
+  mobileNumber(userName : any){
+    return this.http.get(`${this.baseUrl}/vpay/login/mobileNumber/`+userName,{responseType: 'text'} );
   }
 
   // getOwnerList(username): Observable<any> {
