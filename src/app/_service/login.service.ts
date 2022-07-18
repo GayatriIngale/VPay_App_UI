@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,15 @@ export class LoginService {
   
         return this.http.get(`${this.baseUrl}/vpay/login/user-validation`+'?username='+username +'&password='+password,{responseType: 'text'});
     
+}
+
+
+login1(username: string, password: string): Observable<Object> {
+  const data = {  
+    username: username,  
+    password: password,  
+  }; 
+  return this.http.post(`${this.baseUrl}/vpay/login/user-validation`, data);
 }
 
 private keepAfterRouteChange = false;
