@@ -16,7 +16,7 @@ export class RegisterService {
   registerUser(user : any)  : Observable<any>{
     console.log("In service");
    // console.log(user);
-     return this.http.post(`${this.baseUrl}/vpay/login/registerUser`,user);
+     return this.http.post(`${this.baseUrl}/vpay/login/registerUser`,user, {responseType: 'text'});
   }
 
   

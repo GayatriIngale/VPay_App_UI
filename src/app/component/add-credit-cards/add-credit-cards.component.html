@@ -31,7 +31,7 @@
             <span class="text-danger" *ngIf="bankName.errors?.pattern">Please enter bankName</span>
         </div>
           <br>
-            <label for="userName">User Name<span style="color:red"> *</span></label>
+            <!-- <label for="userName">User Name<span style="color:red"> *</span></label>
               <input type="text" class="form-control" id="userName" placeholder="User name" [(ngModel)]="cardDetails.userName"
               formControlName="userName"  >
             <div *ngIf="userName.invalid && (userName.touched||submitted)">
@@ -39,11 +39,11 @@
               <span class="text-danger" *ngIf="userName.errors?.required">User name is required</span>
               <span class="text-danger" *ngIf="userName.errors?.pattern">Please enter user name</span>
             </div> 
-            <br>
+            <br> -->
             
             
             <br>
-              <button type="button" class="btn btn-success" (click)="saveCards()">Submit</button>
+              <button type="button" class="btn btn-success" (click)="saveCards()">Add</button>
            
             </form>
           </div>

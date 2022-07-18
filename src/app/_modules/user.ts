@@ -5,6 +5,7 @@ export class User {
     emailId ! : String;
     password ! : String;
     userName ! : string
+    mobileNumber ! :number
 }
 
 // private long id;
