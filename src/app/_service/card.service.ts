@@ -45,6 +45,11 @@ export class CardService {
 
   listOfCards(mobileNumber: string | null): Observable<any> {
    
-    return this.http.get(`${this.baseUrl}/vpay/card/allCards/${mobileNumber}`);
+    return this.http.get(`${this.baseUrl}/vPay/lender/allLenders/${mobileNumber}`);
   }
-}
+
+  totalDue1(cardNumber : any){
+    return this.http.get(`${this.baseUrl}/vPay/lender/tDue/${cardNumber}`);
+  }
+  }
+

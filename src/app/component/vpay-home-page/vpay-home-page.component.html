@@ -13,6 +13,31 @@
     <h3 style="color: red;">{{minDue}}</h3>
 </div>
 <br>
+
+<div class="panel-body" style="width: 100%; overflow-x:auto;">
+    <table align="right">
+        <thead class="thead-light">
+            <tr>
+                <th>cardNumber</th>
+                <!-- <th>cardHolderName</th> -->
+                <th>bankName</th>
+                <th>totalDue</th>
+                <th>minDue</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let card of cards ">
+                <td>{{card.cardNumber}}</td>
+                <td>{{card.bankName}}</td>
+                <td>{{card.totalDue}}</td>
+                <td>{{card.minDue}}</td>
+            </tr>
+        </tbody><br>
+    </table>
+</div>
+
+
+
 </form>
 <form style="text-align:center;">
     <a routerLink="/addCards"><button class="btn btn-success pull-right" > Add Cards</button></a>
