@@ -12,10 +12,12 @@
     <tbody>
       <tr *ngFor="let offer of offers">
         <td>{{ offer.cardNumber }}</td>
-        <td>{{ offer.offer }}
+        <td>{{ offer.offerType }}
 
             </td>
-            <td>            <a routerLink="/addtoWallet" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" class="btn btn-link">Add Money to wallet</a>
+            <!-- <td>            <a routerLink="/viewOffer" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" class="btn btn-link">View Offer</a> -->
+         
+         <td>       <button type="button" (click)="onSelect(offer)" class="btn btn-success">View Offer</button>
             </td>
         
       </tr>

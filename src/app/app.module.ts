@@ -13,6 +13,7 @@ import { AddKycComponent } from './component/add-kyc/add-kyc.component';
 import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
 import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
+import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddtowalletComponent } from './component/addtowallet/addtowallet.compon
     AddKycComponent,
     AuthAdhaarComponent,
     ShowoffersComponent,
-    AddtowalletComponent
+    AddtowalletComponent,
+    VeiwofferComponent
     
   ],
   imports: [
