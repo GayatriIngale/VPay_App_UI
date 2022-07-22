@@ -16,7 +16,11 @@ import { AddKycComponent } from './component/add-kyc/add-kyc.component';
 import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
 import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
+<<<<<<< HEAD
 import { PaymentComponent } from './component/payment/payment.component';
+=======
+import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
+>>>>>>> 6579721a3abab099b85a36b17eb805e29b471bab
 
 
 @NgModule({
@@ -34,7 +38,12 @@ import { PaymentComponent } from './component/payment/payment.component';
     AuthAdhaarComponent,
     ShowoffersComponent,
     AddtowalletComponent,
+<<<<<<< HEAD
     PaymentComponent
+=======
+    VeiwofferComponent
+
+>>>>>>> 6579721a3abab099b85a36b17eb805e29b471bab
 
     
   ],

@@ -26,4 +26,13 @@ export class OfferServiceService {
     amount: amount,  
   };      return this.http.post(`${this.baseUrl}/vpay/offer/addWallet`, data);
   }
+
+getAccounts(username:any){
+  // console.log(user);
+    return this.http.get(`${this.baseUrl}/vpay/accounts/getaccounts/${username}`);
+ }
+ balanceTransfer(input: any) : Observable<any>{
+   return this.http.post(`${this.baseUrl}/vpay/accounts/transfer`, input);
+
+ }
 }

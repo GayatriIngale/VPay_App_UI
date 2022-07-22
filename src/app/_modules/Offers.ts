@@ -4,4 +4,5 @@
     userName ! : String;
     bankName ! : String;
     offer ! : String;
+    offerType ! : String;
 }
