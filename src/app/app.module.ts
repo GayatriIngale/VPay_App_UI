@@ -16,6 +16,7 @@ import { AddKycComponent } from './component/add-kyc/add-kyc.component';
 import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
 import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
+import { PaymentComponent } from './component/payment/payment.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AddtowalletComponent } from './component/addtowallet/addtowallet.compon
     AddKycComponent,
     AuthAdhaarComponent,
     ShowoffersComponent,
-    AddtowalletComponent
+    AddtowalletComponent,
+    PaymentComponent
 
     
   ],
