@@ -10,6 +10,7 @@ import { RegisterUserComponent } from './component/register-user/register-user.c
 import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
 import { ShowoffersComponent } from './component/showoffers/showoffers.component';
+import { PaymentComponent } from './component/payment/payment.component';
 import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 
 const routes: Routes = [
@@ -23,8 +24,12 @@ const routes: Routes = [
   { path: 'addKYC', component: AddKycComponent },
   { path: 'auth', component: AuthAdhaarComponent },
   { path: 'showOffers', component: ShowoffersComponent },
+
+  { path: 'addtoWallet', component: AddtowalletComponent },
+  { path: 'payment', component: PaymentComponent },
+
   { path: 'viewOffer', component: VeiwofferComponent },
-  { path: 'addtoWallet', component: AddtowalletComponent }
+
 
   
 

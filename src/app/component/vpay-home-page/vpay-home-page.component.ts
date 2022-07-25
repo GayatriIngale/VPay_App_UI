@@ -30,6 +30,8 @@ export class VPayHomePageComponent implements OnInit {
       if(data!=null){
         console.log("not null");
         this.totalDue= data;
+        localStorage.setItem('totalDue', this.totalDue);
+        //localStorage.setItem('totalDue', this.totalDue);
       }
       else{
         console.log(" null");
@@ -40,6 +42,7 @@ export class VPayHomePageComponent implements OnInit {
       this.cardService.minDue(this.cardHolderName).subscribe(data =>{
         if(data!=null){
           this.minDue= data;
+          localStorage.setItem('minDue', this.minDue);
         }
         else{
           this.minDue = 0;
@@ -52,6 +55,9 @@ export class VPayHomePageComponent implements OnInit {
   }
   
  })
+
+ 
+ 
  this.cardService.listOfCards(localStorage.getItem("mobileNumber")).subscribe(data =>{
   // data.cardNumber.replace(/.(?=.{4})/g, "#");
   // cc.replace(/.(?=.{4})/g, "#");
@@ -62,11 +68,4 @@ export class VPayHomePageComponent implements OnInit {
        this.router.navigate(['addCards']);
   }
 
-
-
-  cardNumber1 : any;
-   maskify(cardNumber: any) {
-    console.log("In maskFunction");
-    return cardNumber;
-  }
 }
