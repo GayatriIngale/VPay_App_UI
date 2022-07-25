@@ -20,4 +20,10 @@ export class PaymentService {
     return this.http.get(`${this.baseUrl}/vPay/lender/clearDue/`+amount+`/`+mobileNumber,{responseType: 'text'});
 
   }
+
+  check(array: number[]){
+    return this.http.get(`${this.baseUrl}/vPay/lender/array/`+array,{responseType: 'text'});
+
+  }
+  
 }

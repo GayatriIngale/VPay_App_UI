@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class OfferServiceService {
  
   baseUrl!:string;
-
+ 
   constructor(private http:HttpClient) { 
     this.baseUrl = environment.baseUrl;
   }

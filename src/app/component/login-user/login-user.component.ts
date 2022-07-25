@@ -45,47 +45,55 @@ response: any;
     }
 
     this.loading = true;
-    this.loginService.login1(this.f.username.value, this.f.password.value).subscribe(data => {
-this.response = data;
-      if(this.response.message=='success')
+//     this.loginService.login(this.f.username.value, this.f.password.value).subscribe(data => {
+// this.response = data;
+
+//       if(this.response.message=='success')
+//               {
+//                // console.log(this.response); 
+//                 localStorage.setItem('username', this.f.username.value);
+//                 console.log(this.f.username.value)
+//                 this.router.navigateByUrl('/VPay')
+//               }
+//               else{
+//                                             this.router.navigateByUrl('/VPay')
+            
+//                               alert("user not found");
+//                               this.router.navigateByUrl('/login')
+                              
+//                           }
+//     });
+
+
+
+     this.loginService.login(this.f.username.value, this.f.password.value).subscribe
+       
+        (
+            data => {
+              this.response=data;
+              console.log(data);
+             // this.result=data.message;
+              this.result=data;
+
+              if(this.response=='user login successfully..!!')
               {
                // console.log(this.response); 
                 localStorage.setItem('username', this.f.username.value);
                 console.log(this.f.username.value)
                 this.router.navigateByUrl('/VPay')
-              }
-    });
+              }else{
+                              //  this.router.navigateByUrl('/VPay')
 
-
-
-    //  this.loginService.login1(this.f.username.value, this.f.password.value).subscribe
-       
-    //     (
-    //         data => {
-    //           this.response=data;
-    //           console.log(data);
-    //           this.result=data.message;
-    //           this.result=data;
-
-    //           if(this.response=='success')
-    //           {
-    //            // console.log(this.response); 
-    //             localStorage.setItem('username', this.f.username.value);
-    //             console.log(this.f.username.value)
-    //             this.router.navigateByUrl('/VPay')
-    //           }else{
-    //                             this.router.navigateByUrl('/VPay')
-
-    //               alert("user not found");
-    //               this.router.navigateByUrl('/login')
+                  alert("user not found");
+                  this.router.navigateByUrl('/login')
                   
-    //           }
+              }
                
-    //         },
-    //         error => {
-    //             this.loginService.error(error);
-    //             this.loading = false;
-    //         });
+            },
+            error => {
+                this.loginService.error(error);
+                this.loading = false;
+            });
 
    
 }

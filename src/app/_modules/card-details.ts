@@ -1,5 +1,5 @@
 export class CardDetails {
-    //id! : number;
+    id! : number;
     cardNumber! : number;
     cardHolderName! : String;
     bankName! :String;
@@ -9,6 +9,8 @@ export class CardDetails {
     flag !: CharacterData;
     billingDate ! : Date;
     mobileNumber !: number;
+    isSelected! : boolean;
+    amount ! : number;
 }
 
 

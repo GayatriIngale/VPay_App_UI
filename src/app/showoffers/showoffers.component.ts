@@ -21,7 +21,7 @@ offers: Offers[] = [];
       {
     this.offers=data;
     // localStorage.setItem('offers', this.offers);
-
+      
       console.log(data.length+"length");
       },error => console.log(error),
       );

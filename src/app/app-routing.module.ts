@@ -10,11 +10,8 @@ import { RegisterUserComponent } from './component/register-user/register-user.c
 import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
 import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
-<<<<<<< HEAD
 import { PaymentComponent } from './component/payment/payment.component';
-=======
 import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
->>>>>>> 6579721a3abab099b85a36b17eb805e29b471bab
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,19 +24,10 @@ const routes: Routes = [
   { path: 'addKYC', component: AddKycComponent },
   { path: 'auth', component: AuthAdhaarComponent },
   { path: 'showOffers', component: ShowoffersComponent },
-<<<<<<< HEAD
   { path: 'addtoWallet', component: AddtowalletComponent },
-  { path: 'payment', component: PaymentComponent }
-=======
+  { path: 'payment', component: PaymentComponent },
   { path: 'viewOffer', component: VeiwofferComponent },
   { path: 'addtoWallet', component: AddtowalletComponent }
->>>>>>> 6579721a3abab099b85a36b17eb805e29b471bab
-
-  
-
-
-
-
 ];
 
 @NgModule({

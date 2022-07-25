@@ -8,19 +8,14 @@ import { LoginUserComponent } from './component/login-user/login-user.component'
 import { RegisterUserComponent } from './component/register-user/register-user.component';
 import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
 import { AddCreditCardsComponent } from './component/add-credit-cards/add-credit-cards.component';
-
 import { CardListComponent } from './component/card-list/card-list.component';
-
 import { CheckKycComponent } from './component/check-kyc/check-kyc.component';
 import { AddKycComponent } from './component/add-kyc/add-kyc.component';
 import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
 import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
-<<<<<<< HEAD
 import { PaymentComponent } from './component/payment/payment.component';
-=======
 import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
->>>>>>> 6579721a3abab099b85a36b17eb805e29b471bab
 
 
 @NgModule({
@@ -38,12 +33,9 @@ import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
     AuthAdhaarComponent,
     ShowoffersComponent,
     AddtowalletComponent,
-<<<<<<< HEAD
-    PaymentComponent
-=======
+    PaymentComponent,
     VeiwofferComponent
 
->>>>>>> 6579721a3abab099b85a36b17eb805e29b471bab
 
     
   ],

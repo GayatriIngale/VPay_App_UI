@@ -1,12 +1,15 @@
-<form style="text-align:center;">
-<br>
-<br>
-<div>
+<form style="text-align:center;" [formGroup]="cardDetails">
+
+<div class="main">
     
-    <h2>Total Due </h2>
+        <h2>Wallet balance</h2>
+    <h2 style="color: red;">{{walletAmount}}</h2> 
+   
+        <h2>Total Due </h2>
     <h3 style="color: red;">{{totalDue}}</h3>
     <h2>Minimun Due</h2>
     <h3 style="color: red;">{{minDue}}</h3>
+    
 </div>
 <div class="panel-body" style="width: 100%; overflow-x:auto;">
     <table align="rightS">
@@ -17,21 +20,38 @@
                 <th>bankName</th>
                 <th>totalDue</th>
                 <th>minDue</th>
+                <th>Enter amount</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let card of cards ">
                 <td>
-
-                    <input type="checkbox" value=""(click)="getRow(card)"/> 
+                    <input type="checkbox" value="" (click)="getRow(card, $event)"/> 
                 </td>
                 <td>{{card.cardNumber}}</td>
                 <td>{{card.bankName}}</td>
                 <td>{{card.totalDue}}</td>
                 <td>{{card.minDue}}</td>
+                <td><input type="number" id="amount" placeholder="enter amount" [(ngModel)]="card.amount" formControlName="amount"></td>
+                
             </tr>
-        </tbody><br>
+            <tr>
+                <td colspan="3"> Total Dues</td>
+                <td>{{totalDue}}</td>
+                <td>{{minDue}}</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="3">Enter amount</td>
+               <td colspan="2"><input type="number" placeholder="enter amount"></td>
+            </tr> -->
+        </tbody>
+        
+        
     </table>
+
+<!--  button to select all selected cards    -->
+    <button class="btn btn-primary"  (click)="getArray( )" style="max-width: 350px; margin-right: 0.2cm; margin-bottom: 0.7cm;">select</button>&nbsp;
+
     
 </div>
 <button class="btn btn-primary"  (click)="Payment(this.userName )" style="max-width: 350px; margin-right: 0.2cm; margin-bottom: 0.7cm;">NetBanking</button>&nbsp;
