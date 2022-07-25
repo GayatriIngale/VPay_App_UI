@@ -8,9 +8,9 @@ import { CardListComponent } from './component/card-list/card-list.component';
 import { LoginUserComponent } from './component/login-user/login-user.component';
 import { RegisterUserComponent } from './component/register-user/register-user.component';
 import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
-import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
-import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
+import { ShowoffersComponent } from './component/showoffers/showoffers.component';
+import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
