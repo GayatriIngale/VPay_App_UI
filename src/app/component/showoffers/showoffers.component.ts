@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Offers } from '../_modules/Offers';
-import { OfferServiceService } from '../_service/offer-service.service';
+import { Offers } from 'src/app/_modules/Offers';
+import { OfferServiceService } from 'src/app/_service/offer-service.service';
 
 @Component({
   selector: 'app-showoffers',
@@ -23,7 +23,7 @@ offers: Offers[] = [];
     // localStorage.setItem('offers', this.offers);
       
       console.log(data.length+"length");
-      },error => console.log(error),
+      },(error: any) => console.log(error),
       );
 
   }

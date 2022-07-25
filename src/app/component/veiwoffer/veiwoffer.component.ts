@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Offers } from '../_modules/Offers';
-import { OfferServiceService } from '../_service/offer-service.service';
+import { OfferServiceService } from 'src/app/_service/offer-service.service';
 
 @Component({
   selector: 'app-veiwoffer',
@@ -13,6 +12,10 @@ export class VeiwofferComponent implements OnInit {
   transferForm: any;
 accounts:any;
 bankName: any;
+offerAmt: any;
+  isbalaceOffer: boolean = false;
+  loanForm: any;
+  interestRate: any;
   constructor(private formBuilder : FormBuilder, private router : Router, private offerService: OfferServiceService,) {
      // should log out 'bar'
      const data = this.router.getCurrentNavigation()?.extras;
@@ -20,6 +23,11 @@ bankName: any;
      console.log(data); 
      this.offer = data;
      this.bankName=this.offer.bankName;
+     this.offerAmt = this.offer.offerAmt;
+     this.interestRate =this.offer.interestRate;
+     if(this.offer.offerType==="balance transfer"){
+       this.isbalaceOffer = true;
+     }
      
    }
   offer: any;
@@ -28,8 +36,18 @@ bankName: any;
 
     this.transferForm = this.formBuilder.group({
       accountNumber: ['', Validators.required],
-      amount: ['', Validators.required]
+      amount: ['', Validators.required],
+     
   });
+
+  this.loanForm = this.formBuilder.group({
+    document: ['', Validators.required],
+    amount: ['', Validators.required],
+    otp:['', Validators.required],
+    employeeId:['', Validators.required],
+    employerName:['', Validators.required],
+
+});
      }
 
      apply(){
@@ -40,18 +58,37 @@ bankName: any;
        })
      }
      onSubmit(){
+       alert(this.f.amount.value);
       // this.loginService.login1(this.f.username.value, this.f.password.value).subscribe(data => {
         const input = {
           username:localStorage.getItem('username'),
           fromBank:this.bankName,
           toAccount: this.f.accountNumber.value,
           offerDetails :this.offer.offer,
-          amount : this.f.amount.value
+          amount : this.f.amount.value,
         };
+
 this.offerService.balanceTransfer(input).subscribe(data => {
   // this.accounts =data;
 });
 
      }
-get f() { return this.transferForm.controls; }
+     onSubmitLoan(){
+
+      const input = {
+        username:localStorage.getItem('username'),
+        bankName:this.bankName,
+        loanAmount : this.s.amount.value,
+        employerName : this.s.employerName.value,
+        employeeId : this.s.employeeId.value,
+        interestRate: this.interestRate,
+
+      };
+      this.offerService.loanTransfer(input).subscribe(data => {
+        // this.accounts =data;
+      });
+     }
+
+     get f() { return this.transferForm.controls; }
+     get s() { return this.loanForm.controls; }
 }

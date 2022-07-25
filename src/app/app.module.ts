@@ -12,10 +12,11 @@ import { CardListComponent } from './component/card-list/card-list.component';
 import { CheckKycComponent } from './component/check-kyc/check-kyc.component';
 import { AddKycComponent } from './component/add-kyc/add-kyc.component';
 import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
-import { ShowoffersComponent } from './showoffers/showoffers.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
+import { ShowoffersComponent } from './component/showoffers/showoffers.component';
+import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 import { PaymentComponent } from './component/payment/payment.component';
-import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
+
 
 
 @NgModule({
@@ -34,8 +35,9 @@ import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
     ShowoffersComponent,
     AddtowalletComponent,
     PaymentComponent,
-    VeiwofferComponent
-
+    VeiwofferComponent,
+     PaymentComponent,
+    VeiwofferComponent,
 
     
   ],

@@ -5,4 +5,5 @@
     bankName ! : String;
     offer ! : String;
     offerType ! : String;
+    offerAmt ! : number;
 }

@@ -5,31 +5,31 @@
 
             <label for="cardNumber">CardNumber<span style="color:red"> *</span></label>
             <input type="text" class="form-control" id="cardNumber" placeholder="cardNumber" [(ngModel)]="cardDetails.cardNumber" formControlName="cardNumber"  >
-          <div *ngIf="cardNumber.invalid && (cardNumber.touched||submitted)">
+          <!-- <div *ngIf="cardNumber.invalid && (cardNumber.touched||submitted)">
         
             <span class="text-danger" *ngIf="cardNumber.errors?.required">cardNumber is required</span>
             <span class="text-danger" *ngIf="cardNumber.errors?.pattern">Please enter cardNumber</span>
             
-          </div>
+          </div> -->
           
           <br>
           <label for="cardHolderName">CardHolderName<span style="color:red"> *</span></label>
           <input type="text" class="form-control" id="cardHolderName" placeholder="cardHolderName" [(ngModel)]="cardDetails.cardHolderName" formControlName="cardHolderName"  >
-        <div *ngIf="cardHolderName.invalid && (cardHolderName.touched||submitted)">
+        <!-- <div *ngIf="cardHolderName.invalid && (cardHolderName.touched||submitted)">
       
           <span class="text-danger" *ngIf="cardHolderName.errors?.required">cardHolderName is required</span>
           <span class="text-danger" *ngIf="cardHolderName.errors?.pattern">Please enter cardHolderName</span>
           
-        </div>
+        </div> -->
         <br>
         <label for="bankName">BankName<span style="color:red"> *</span></label>
           <input type="text" class="form-control" id="bankName" placeholder="bankName"
             [(ngModel)]="cardDetails.bankName" formControlName="bankName" >
        
-            <div *ngIf="bankName.invalid && (bankName.touched||submitted)">
+            <!-- <div *ngIf="bankName.invalid && (bankName.touched||submitted)">
             <span class="text-danger" *ngIf="bankName.errors?.required">bankName required</span>
-            <span class="text-danger" *ngIf="bankName.errors?.pattern">Please enter bankName</span>
-        </div>
+            <span class="text-danger" *ngIf="bankName.errors?.pattern">Please enter bankName</span> -->
+        
           <br>
             <!-- <label for="userName">User Name<span style="color:red"> *</span></label>
               <input type="text" class="form-control" id="userName" placeholder="User name" [(ngModel)]="cardDetails.userName"

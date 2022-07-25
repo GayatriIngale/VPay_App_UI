@@ -35,4 +35,8 @@ getAccounts(username:any){
    return this.http.post(`${this.baseUrl}/vpay/accounts/transfer`, input);
 
  }
+ loanTransfer(input: any) : Observable<any>{
+  return this.http.post(`${this.baseUrl}/vpay/accounts/loantransfer`, input);
+
+}
 }
