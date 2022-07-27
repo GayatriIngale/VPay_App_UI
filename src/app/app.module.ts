@@ -18,7 +18,10 @@ import { PaymentComponent } from './component/payment/payment.component';
 import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
-import { PayBySavingAccountComponent } from './component/pay-by-saving-account/pay-by-saving-account.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -37,8 +40,8 @@ import { PayBySavingAccountComponent } from './component/pay-by-saving-account/p
     PaymentComponent,
    PaymentComponent,
    VeiwofferComponent,
-   PayBySavingAccountComponent,
-  
+  HeaderComponent,
+  FooterComponent,
     
   ],
   imports: [
@@ -49,7 +52,9 @@ import { PayBySavingAccountComponent } from './component/pay-by-saving-account/p
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    
+    MatToolbarModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

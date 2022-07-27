@@ -11,6 +11,8 @@ import { OfferServiceService } from 'src/app/_service/offer-service.service';
 export class ShowoffersComponent implements OnInit {
   dataSource: any;
 offers: Offers[] = [];
+  isBalance: boolean = false;
+  isLoan: boolean = false;
 
   constructor(private offerService: OfferServiceService, private router: Router) { }
 
@@ -21,7 +23,7 @@ offers: Offers[] = [];
       {
     this.offers=data;
     // localStorage.setItem('offers', this.offers);
-      
+  
       console.log(data.length+"length");
       },(error: any) => console.log(error),
       );
@@ -32,5 +34,14 @@ offers: Offers[] = [];
     console.log("Selected item Id: ", selectedItem.id); // You get the Id of the selected item here
     this.router.navigate(['/viewOffer'], selectedItem);
 
+}
+balance(){
+this.isBalance = true;
+this.isLoan = false;
+}
+loan(){
+
+  this.isLoan = true;
+  this.isBalance = false;
 }
 }

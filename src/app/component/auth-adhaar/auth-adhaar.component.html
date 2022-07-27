@@ -1,28 +1,39 @@
 <div class="container">
     <div *ngIf =" ! isSubmitted ">
     <div  class="form-group">
-        Please enter Otp sent on your registered mobile number.<br/>
+        Please enter OTP sent on your aadhar registered mobile number.<br/>
         <label for="otp" style="max-width: 350px; margin-left: 0.2cm;">OTP</label>
         <input toggle type="password" style="max-width: 350px; margin-left: 0.2cm;"  class="form-control"  >
             <span id="toggle_pwd" class="fa fa-fw fa-eye field_icon"></span>
         </div>
 
-        <button type="submit" (click)="success()"  class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+        <button type="submit" (click)="success()"  class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
             Submit
         </button>  
-        <button type="reset"  class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+        <button type="reset"  class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
             Cancel
         </button>  
         </div>
 </div>
-<div *ngIf ="isSubmitted">Please accept terms and conditions.
+<div *ngIf ="isSubmitted && ! isNext">Please select if link KYC with VPay.
     <div  class="form-group">
 
     <input type="checkbox" id="terms" name="terms" value="terms">
 <label for="terms"> I accept terms and conditions</label><br>
-<button type="submit" (click)="next()" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+<button type="submit" (click)="next()" class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
     Next
 </button>  
 </div>
+</div>
+<div *ngIf ="isNext">Please select if you want to get offers from cibil score.
+<div  class="form-group">
 
-
+    
+<button type="submit" (click)="nextScore()" class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+    Ok
+</button>
+<button type="reset" (click)="withoutScore()" class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+    Cancel
+</button>  
+</div>
+</div>

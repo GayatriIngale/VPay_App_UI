@@ -74,7 +74,6 @@ this.offerService.balanceTransfer(input).subscribe(data => {
 
      }
      onSubmitLoan(){
-
       const input = {
         username:localStorage.getItem('username'),
         bankName:this.bankName,

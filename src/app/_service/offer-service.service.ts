@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class OfferServiceService {
  
   baseUrl!:string;
- 
+
   constructor(private http:HttpClient) { 
     this.baseUrl = environment.baseUrl;
   }
@@ -39,4 +39,9 @@ getAccounts(username:any){
   return this.http.post(`${this.baseUrl}/vpay/accounts/loantransfer`, input);
 
 }
+
+getOffersFromScore(uid:any){
+  // console.log(user);
+    return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/score/{uid}`);
+ }
 }

@@ -1,70 +1,70 @@
 <div ><p >
-    Offer Description:{{offer.offer}} 
-    </p>
-    </div>
-    <button type="submit" (click)="apply()">Click here to apply offer</button>
-    <div *ngIf="isApplyOffer && isbalaceOffer">
-    
-        <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="amount">Account: </label>
-                <select formControlName="accountNumber">
-                    <option [ngValue]="null" disabled>Select account</option>
-                    <option *ngFor="let account of accounts" [ngValue]="account">{{account}}</option>
-                  </select>
-          </div>
-          <div class="form-group">
-            <label for="amount">Amount: </label>
-            <input id="amount" type="text" formControlName="amount">
+Offer Description:{{offer.offer}} 
+</p>
+</div>
+<button type="submit" (click)="apply()">Click here to apply offer</button>
+<div *ngIf="isApplyOffer && isbalaceOffer">
+
+    <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="amount">Account: </label>
+            <select formControlName="accountNumber">
+                <option [ngValue]="null" disabled>Select account</option>
+                <option *ngFor="let account of accounts" [ngValue]="account">{{account}}</option>
+              </select>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount: </label>
+        <input id="amount" type="text" formControlName="amount">
+        </div>
+        <div class="form-group">
+        <button type ="submit" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+            Submit
+        </button>  
+        <button  type = "reset" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+            Cancel
+        </button>  
+        </div>
+      </form>
+</div>
+
+
+<!-- Loan UI -->
+
+<div *ngIf="isApplyOffer && !isbalaceOffer">
+
+    <form [formGroup]="loanForm" (ngSubmit)="onSubmitLoan()">
+        
+      <div class="form-group">
+        <label for="amount">Loan Amount: </label>
+        <input id="amount" type="text" formControlName="amount">
+        </div>
+
+        <div class="form-group">
+            <label>Please enter employment details: </label>
+
+            <label for="employerName">Employer Name : </label>
+            <input id="employerName" type="text" formControlName="employerName">
             </div>
             <div class="form-group">
-            <button type ="submit" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-                Submit
-            </button>  
-            <button  type = "reset" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-                Cancel
-            </button>  
-            </div>
-          </form>
-    </div>
-    
-    
-    <!-- Loan UI -->
-    
-    <div *ngIf="isApplyOffer && !isbalaceOffer">
-    
-        <form [formGroup]="loanForm" (ngSubmit)="onSubmitLoan()">
-            
-          <div class="form-group">
-            <label for="amount">Loan Amount: </label>
-            <input id="amount" type="text" formControlName="amount">
-            </div>
-    
-            <div class="form-group">
-                <label>Please enter employment details: </label>
-    
-                <label for="employerName">Employer Name : </label>
-                <input id="employerName" type="text" formControlName="employerName">
+                <label for="employeeId">Employee Id : </label>
+                <input id="employeeId" type="number" formControlName="employeeId">
                 </div>
                 <div class="form-group">
-                    <label for="employeeId">Employee Id : </label>
-                    <input id="employeeId" type="number" formControlName="employeeId">
+                    <label for="otp">Please enter OTP sent on your registered mobile number: </label>
+                    <input id="otp" type="text" formControlName="otp">
                     </div>
-                    <div class="form-group">
-                        <label for="otp">Please enter OTP sent on your registered mobile number: </label>
-                        <input id="otp" type="text" formControlName="otp">
-                        </div>
-            <div class="form-group">
-                <label for="document">Please upload Documents for verification: </label>
-                <input id="document" type="file" formControlName="document">
-                </div>
-            <div class="form-group">
-            <button type ="submit" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-                Submit
-            </button>  
-            <button  type = "reset" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-                Cancel
-            </button>  
+        <div class="form-group">
+            <label for="document">Please upload Documents for verification: </label>
+            <input id="document" type="file" formControlName="document">
             </div>
-          </form>
-    </div>
+        <div class="form-group">
+        <button type ="submit" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+            Submit
+        </button>  
+        <button  type = "reset" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+            Cancel
+        </button>  
+        </div>
+      </form>
+</div>

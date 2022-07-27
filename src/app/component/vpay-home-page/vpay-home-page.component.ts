@@ -12,7 +12,7 @@ export class VPayHomePageComponent implements OnInit {
 
   totalDue : any;
   minDue : any;
-  mobileNumber! : string;
+  cardHolderName! : string;
 
   constructor(private router: Router, private cardService: CardService) { }
 
@@ -24,9 +24,9 @@ export class VPayHomePageComponent implements OnInit {
   localStorage.setItem('mobileNumber', data);
   if(data!== ""){
     console.log("CardHolderName: "+data)
-    this.mobileNumber = data;
+    this.cardHolderName = data;
     
-    this.cardService.totalDue(this.mobileNumber).subscribe(data =>{
+    this.cardService.totalDue(this.cardHolderName).subscribe(data =>{
       if(data!=null){
         console.log("not null");
         this.totalDue= data;
@@ -36,18 +36,16 @@ export class VPayHomePageComponent implements OnInit {
       else{
         console.log(" null");
         this.totalDue= 0;
-        localStorage.setItem('totalDue', this.totalDue);
       }
       })
   
-      this.cardService.minDue(this.mobileNumber).subscribe(data =>{
+      this.cardService.minDue(this.cardHolderName).subscribe(data =>{
         if(data!=null){
           this.minDue= data;
           localStorage.setItem('minDue', this.minDue);
         }
         else{
           this.minDue = 0;
-          localStorage.setItem('minDue', this.minDue);
         }
        })
   }

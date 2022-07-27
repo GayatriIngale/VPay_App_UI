@@ -1,10 +1,9 @@
-
-
-<form style="text-align:center;" [formGroup]="cardDetails">
-<div class="main">
-        <h2>Wallet balance</h2>
-    <h2 style="color: red;">{{walletAmount}}</h2> 
-        <h2>Total Due </h2>
+<form style="text-align:center;">
+<br>
+<br>
+<div>
+    
+    <h2>Total Due </h2>
     <h3 style="color: red;">{{totalDue}}</h3>
     <h2>Minimun Due</h2>
     <h3 style="color: red;">{{minDue}}</h3>
@@ -14,50 +13,30 @@
         <thead class="thead-light">
             <tr>
                 <th>select</th>
-                <th>cardNumber/LoanNumber</th>
+                <th>cardNumber</th>
                 <th>bankName</th>
                 <th>totalDue</th>
                 <th>minDue</th>
-               
-                <th>due duration</th>
-                <th>Enter amount</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let card of cards ">
                 <td>
-                    <input type="checkbox" value="" (click)="getRow(card, $event)"/> 
+
+                    <input type="checkbox" value=""(click)="getRow(card)"/> 
                 </td>
                 <td>{{card.cardNumber}}</td>
                 <td>{{card.bankName}}</td>
                 <td>{{card.totalDue}}</td>
                 <td>{{card.minDue}}</td>
-                <td>{{card.dueDate}}</td>
-                <td><input type="number" id="amount" placeholder="enter amount" [(ngModel)]="card.amount" formControlName="amount"></td>
-                
             </tr>
-            <tr>
-                <td colspan="6"> Total</td>
-                <td>{{selectedAmount}}</td>
-                
-            </tr>
-        </tbody>
-        
-        
+        </tbody><br>
     </table>
-
-
-
     
 </div>
-<br>
-<button class="btn btn-primary"   style="margin-right: 50px;">NetBanking</button>&nbsp;
-
-<button class="btn btn-primary"  (click)="clearByWallet( )" style="margin-right: 50px;">VPay Wallet</button>&nbsp;
-
-<button class="btn btn-primary"   style="margin-right: 50px;">Saving+VPayWallet</button>&nbsp;
-
-<button (click)="openDialog()">check</button>
+<button class="btn btn-primary"  (click)="Payment(this.userName )" style="max-width: 350px; margin-right: 0.2cm; margin-bottom: 0.7cm;">NetBanking</button>&nbsp;
+<button class="btn btn-primary"  (click)="Payment(this.userName )" style="margin-right: 50px;">VPay Wallet</button>&nbsp;
+<button class="btn btn-primary"  (click)="Payment(this.userName )" style="margin-right: 50px;">UPI</button>&nbsp;
+<button class="btn btn-primary"  (click)="Payment(this.userName )" style="margin-right: 50px;">SavingAndVPayWallet</button>&nbsp;
+<button class="btn btn-primary"  (click)="Payment(this.userName )" style="margin-right: 50px;">checkOffers</button>&nbsp;
 </form>
-
-

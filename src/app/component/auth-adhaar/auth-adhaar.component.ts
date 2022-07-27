@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Offers } from 'src/app/_modules/Offers';
+import { NotificationService } from 'src/app/_service/notification.service';
+import { OfferServiceService } from 'src/app/_service/offer-service.service';
 
 @Component({
   selector: 'app-auth-adhaar',
@@ -8,22 +11,37 @@ import { Router } from '@angular/router';
 })
 export class AuthAdhaarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private offerservice: OfferServiceService, private notificationService : NotificationService) { }
   isSubmitted = false;
+  isNext = false;
+  offers : any;
   ngOnInit(): void {
     this.isSubmitted = false;
 
   }
   success() {
     
-
-    alert("Verification done")
+    this.notificationService.showSuccess("Verification done", "");
+    // alert("Verification done")
     this.isSubmitted = true;
 
     // stop here if form is invalid
   }
   next(){
+this.isNext=true;
     this.router.navigateByUrl('/showOffers')
 
+  }
+
+  nextScore(){
+// Service to get offers from cibil score
+this.offerservice.getOffersFromScore(localStorage.getItem('uid')).subscribe(data => {
+
+this.offers = data;
+});
+}
+
+  withoutScore(){
+    // Service to get all Offers
   }
 }

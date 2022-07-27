@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/_service/notification.service';
 import { Kyc } from '../../_modules/kyc';
 import { User } from '../../_modules/user';
 import { KycService } from '../../_service/KycService';
@@ -13,7 +14,7 @@ import { KycService } from '../../_service/KycService';
 export class AddKycComponent implements OnInit {
 
   addKyc: any;
-  constructor(private kycService : KycService , private router: Router) { }
+  constructor(private kycService : KycService , private router: Router, private notificationService :NotificationService) { }
 //private registerService : RegisterService, private router: Router
   kycs: Kyc = new Kyc();
   //private registerService! : RegisterService
@@ -31,14 +32,26 @@ export class AddKycComponent implements OnInit {
   
 
   submit() {  
-    alert(localStorage.getItem('username'));
-this.kycService.saveKyc(this.kycs, localStorage.getItem('username')).subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
     
-    this.router.navigate(['auth']);
+this.kycService.saveKyc(this.kycs, localStorage.getItem('username')).subscribe(data => {
+  this.notificationService.showSuccess("Kyc Successfull", "");
+  console.log(data)
+
+
+}
+, (error: any) =>
+this.notificationService.showError("Kyc Successfull", "")
+);
+
+// console.log(error));  
+    localStorage.setItem('uid',this.addKyc.get('adhaarNumber'));
+    // this.router.navigate(['auth']);
 
 
   }
- 
+  next(){
+    this.router.navigate(['auth']);
+  }
   get adhaarNumber(){
     return this.addKyc.get('adhaarNumber');
   }
