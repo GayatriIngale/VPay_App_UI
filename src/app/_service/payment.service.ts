@@ -21,8 +21,8 @@ export class PaymentService {
 
   }
 
-  check(array: number[]){
-    return this.http.get(`${this.baseUrl}/vPay/lender/array/`+array,{responseType: 'text'});
+  check(id: number[], amount : number[], balance : any){
+    return this.http.get(`${this.baseUrl}/vPay/lender/clearSelected/`+id+`/`+amount+`/`+balance,{responseType: 'text'});
 
   }
   

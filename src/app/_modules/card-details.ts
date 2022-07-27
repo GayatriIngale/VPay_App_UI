@@ -11,6 +11,7 @@ export class CardDetails {
     mobileNumber !: number;
     isSelected! : boolean;
     amount ! : number;
+    dueDate !: string;
 }
 
 

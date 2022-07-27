@@ -14,8 +14,8 @@ import { AddKycComponent } from './component/add-kyc/add-kyc.component';
 import { AuthAdhaarComponent } from './component/auth-adhaar/auth-adhaar.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
 import { ShowoffersComponent } from './component/showoffers/showoffers.component';
-import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 import { PaymentComponent } from './component/payment/payment.component';
+import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 
 
 
@@ -26,18 +26,15 @@ import { PaymentComponent } from './component/payment/payment.component';
     RegisterUserComponent,
     VPayHomePageComponent,
     AddCreditCardsComponent,
-
     CardListComponent,
-
     CheckKycComponent,
     AddKycComponent,
     AuthAdhaarComponent,
     ShowoffersComponent,
     AddtowalletComponent,
     PaymentComponent,
-    VeiwofferComponent,
-     PaymentComponent,
-    VeiwofferComponent,
+   PaymentComponent,
+   VeiwofferComponent,
 
     
   ],

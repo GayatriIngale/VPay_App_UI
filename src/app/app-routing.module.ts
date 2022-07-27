@@ -10,8 +10,8 @@ import { RegisterUserComponent } from './component/register-user/register-user.c
 import { VPayHomePageComponent } from './component/vpay-home-page/vpay-home-page.component';
 import { AddtowalletComponent } from './component/addtowallet/addtowallet.component';
 import { PaymentComponent } from './component/payment/payment.component';
-import { VeiwofferComponent } from './veiwoffer/veiwoffer.component';
 import { ShowoffersComponent } from './component/showoffers/showoffers.component';
+import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -26,11 +26,9 @@ const routes: Routes = [
   { path: 'showOffers', component: ShowoffersComponent },
   { path: 'addtoWallet', component: AddtowalletComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'viewOffer', component: VeiwofferComponent },
   { path: 'addtoWallet', component: AddtowalletComponent },
   { path: 'addtoWallet', component: AddtowalletComponent },
   { path: 'payment', component: PaymentComponent },
-
   { path: 'viewOffer', component: VeiwofferComponent },
 
 ];
