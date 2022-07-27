@@ -16,7 +16,9 @@ import { AddtowalletComponent } from './component/addtowallet/addtowallet.compon
 import { ShowoffersComponent } from './component/showoffers/showoffers.component';
 import { PaymentComponent } from './component/payment/payment.component';
 import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PayBySavingAccountComponent } from './component/pay-by-saving-account/pay-by-saving-account.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
     PaymentComponent,
    PaymentComponent,
    VeiwofferComponent,
-
+   PayBySavingAccountComponent,
+  
     
   ],
   imports: [
@@ -44,6 +47,8 @@ import { VeiwofferComponent } from './component/veiwoffer/veiwoffer.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
     
   ],
   providers: [],

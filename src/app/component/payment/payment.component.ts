@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CardDetails } from 'src/app/_modules/card-details';
 import { CardService } from 'src/app/_service/card.service';
 import { PaymentService } from 'src/app/_service/payment.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PayBySavingAccountComponent } from '../pay-by-saving-account/pay-by-saving-account.component';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { PaymentService } from 'src/app/_service/payment.service';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private paymentService : PaymentService,private router: Router, private cardService: CardService) { }
+  constructor(private dialogRef : MatDialog,private paymentService : PaymentService,private router: Router, private cardService: CardService) { }
   totalDue : any;
   minDue : any;
   userName: any;
@@ -110,7 +112,7 @@ clearByWallet(){
     }
     else{
            if(!!this.amountList  && this.amountList.length==0){
-                 alert("please select amount");
+                 alert("please select  card and amount");
            }else{
            
             this.paymentService.check(this.list,this.amountList, this.selectedAmount).subscribe(data=>
@@ -157,6 +159,11 @@ getUserDetails(){
 // openDialog(){
 //   this.dialogRef.open(PayByNetBankingComponent);
 // }
+
+
+openDialog(){
+  this.dialogRef.open(PayBySavingAccountComponent);
+}
 
 }
 
