@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToastrModule } from 'ngx-toastr';
+import { PayBySavingAccountComponent } from './component/pay-by-saving-account/pay-by-saving-account.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ToastrModule } from 'ngx-toastr';
    VeiwofferComponent,
   HeaderComponent,
   FooterComponent,
+  PayBySavingAccountComponent,
     
   ],
   imports: [

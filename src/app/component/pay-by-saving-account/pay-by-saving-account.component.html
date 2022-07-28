@@ -1,0 +1,20 @@
+
+
+<form>
+    <button  mat-button mat-dialog-close mat-flat-button style="margin-left:550px; color: red;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <h2>Enter your acoun details</h2>
+    
+    <label for="Account No">Account No<span style="color:red"> *</span></label>
+        <input type="number" class="form-control" id="accountNo" placeholder="Enter Account No"  formControlName="accountNo"  >
+     
+
+      <label for="pin">password<span style="color:red"> *</span></label>
+        <input type="text" class="form-control" id="pin" placeholder="Enter password"  formControlName="pin"  >
+        <br>
+        
+      <button mat-button mat-dialog-close mat-flat-button style="margin-right: 50px; color: blue;" (click)="check()">PayNow</button>
+      <button mat-button mat-dialog-close mat-flat-button style="color: red;">Cancel</button>
+</form>
+
