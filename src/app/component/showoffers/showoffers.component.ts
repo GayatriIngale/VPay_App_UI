@@ -17,7 +17,8 @@ offers: Offers[] = [];
   constructor(private offerService: OfferServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    this.offerService.getCardDetails(localStorage.getItem('username')).subscribe(
+    
+    this.offerService.getOffers(localStorage.getItem('username'), localStorage.getItem('mobileNumber')).subscribe(
       // (data: any) => console.log("Data##"+data.json()), (error: any) => console.log(error))
       data =>
       {

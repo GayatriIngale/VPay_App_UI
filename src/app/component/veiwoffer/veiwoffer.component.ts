@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CardDetails } from 'src/app/_modules/card-details';
+import { CardService } from 'src/app/_service/card.service';
 import { OfferServiceService } from 'src/app/_service/offer-service.service';
 
 @Component({
@@ -16,7 +18,13 @@ offerAmt: any;
   isbalaceOffer: boolean = false;
   loanForm: any;
   interestRate: any;
-  constructor(private formBuilder : FormBuilder, private router : Router, private offerService: OfferServiceService,) {
+  selectedAmount: any;
+  list: any;
+  amountList: any;
+  cards !: CardDetails[];
+  mobileNumber : any;
+  
+  constructor(private formBuilder : FormBuilder, private router : Router, private offerService: OfferServiceService, private cardService: CardService ) {
      // should log out 'bar'
      const data = this.router.getCurrentNavigation()?.extras;
     
@@ -56,7 +64,15 @@ offerAmt: any;
        this.offerService.getAccounts(localStorage.getItem('username')).subscribe(data => {
          this.accounts =data;
        })
+       this.mobileNumber = localStorage.getItem("mobileNumber");
+
+       this.cardService.listOfCards(this.mobileNumber).subscribe((data: any) =>{
+        // data.cardNumber.replace(/.(?=.{4})/g, "#");
+        // cc.replace(/.(?=.{4})/g, "#");
+        this.cards = data;
+       })
      }
+  
      onSubmit(){
        alert(this.f.amount.value);
       // this.loginService.login1(this.f.username.value, this.f.password.value).subscribe(data => {
@@ -90,4 +106,40 @@ this.offerService.balanceTransfer(input).subscribe(data => {
 
      get f() { return this.transferForm.controls; }
      get s() { return this.loanForm.controls; }
+
+
+     getRow(card: CardDetails, event : any) {
+
+      console.log("Entered amount: "+card.amount);
+    if(event.target.checked){
+      this.selectedAmount = this.selectedAmount +card.amount;
+      console.log("id: "+card.id);
+      this.list.push(card.id);
+      this.amountList.push(card.amount);
+      console.log("amount list:"+this.amountList);
+      console.log("int array: "+this.list);
+    }
+    else{
+    //  alert("unchecked");
+    this.selectedAmount = this.selectedAmount - card.amount;
+    this.list.forEach((element: number,index: any)=>{
+      if(element==card.id) this.list.splice(index,1);
+      
+   });
+  
+   this.amountList.forEach((element: number,index: any)=>{
+    if(element==card.amount) this.amountList.splice(index,1);
+    
+  });
+   
+    console.log("unchecked");
+   
+    }
+   
+      
+      
+  }
+
+  payDues(){}
+
 }

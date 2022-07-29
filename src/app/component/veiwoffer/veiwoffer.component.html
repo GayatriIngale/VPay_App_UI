@@ -2,10 +2,10 @@
 Offer Description:{{offer.offer}} 
 </p>
 </div>
-<button type="submit" (click)="apply()">Click here to apply offer</button>
+<button type="submit" class="btn btn-success" (click)="apply()">Click here to apply offer</button>
 <div *ngIf="isApplyOffer && isbalaceOffer">
 
-    <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+    <!-- <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="amount">Account: </label>
             <select formControlName="accountNumber">
@@ -25,18 +25,67 @@ Offer Description:{{offer.offer}}
             Cancel
         </button>  
         </div>
-      </form>
+      </form> -->
+
+
+      <div class="panel-body" style="width: 100%; overflow-x:auto;">
+        <table align="rightS">
+            <thead class="thead-light">
+                <tr>
+                    <th>select</th>
+                    <th>cardNumber/LoanNumber</th>
+                    <th>bankName</th>
+                    <th>totalDue</th>
+                    <th>minDue</th>
+                   
+                    <th>due duration</th>
+                    <th>Enter amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let card of cards ">
+                    <td>
+                        <input type="checkbox" value="" (click)="getRow(card, $event)"/> 
+                    </td>
+                    <td>{{card.cardNumber}}</td>
+                    <td>{{card.bankName}}</td>
+                    <td>{{card.totalDue}}</td>
+                    <td>{{card.minDue}}</td>
+                    <td>{{card.dueDate}}</td>
+                    <td><input type="number" id="amount" placeholder="enter amount" [(ngModel)]="card.amount" formControlName="amount"></td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="6"> Total</td>
+                    <td>{{selectedAmount}}</td>
+                    
+                </tr>
+            </tbody>
+            
+            
+        </table>
+    
+    
+    
+        
+    </div>
+    <button class="btn btn-primary"   style="margin-right: 50px;" (click)="payDues()">Pay Due</button>&nbsp;
+
 </div>
 
 
 <!-- Loan UI -->
 
-<div *ngIf="isApplyOffer && !isbalaceOffer">
+<div *ngIf="isApplyOffer && !isbalaceOffer" class="container">
 
     <form [formGroup]="loanForm" (ngSubmit)="onSubmitLoan()">
         
+        <div class="form-group">
+            <label for="tennure">tennure:{{offer.tennure}} </label>
+            </div>
+
       <div class="form-group">
-        <label for="amount">Loan Amount: </label>
+        <label for="amount">Enter Amount upto available limit: </label>
         <input id="amount" type="text" formControlName="amount">
         </div>
 

@@ -18,6 +18,11 @@ export class OfferServiceService {
    // console.log(user);
      return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/${username}`);
   }
+  getOffers(username : any, mobileNumber:any)  : Observable<any>{
+    console.log("In service");
+   // console.log(user);
+     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/score/${mobileNumber}/${username}`);
+  }
 
   addToWallet(username : any, amount : any)  : Observable<any>{
    // console.log(user);
