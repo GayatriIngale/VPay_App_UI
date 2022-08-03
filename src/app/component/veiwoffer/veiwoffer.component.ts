@@ -23,6 +23,8 @@ offerAmt: any;
   amountList: any;
   cards !: CardDetails[];
   mobileNumber : any;
+  isNext: boolean = false;
+  emi: any;
   
   constructor(private formBuilder : FormBuilder, private router : Router, private offerService: OfferServiceService, private cardService: CardService ) {
      // should log out 'bar'
@@ -97,12 +99,18 @@ this.offerService.balanceTransfer(input).subscribe(data => {
         employerName : this.s.employerName.value,
         employeeId : this.s.employeeId.value,
         interestRate: this.interestRate,
+        emi: this.emi,
 
       };
       this.offerService.loanTransfer(input).subscribe(data => {
         // this.accounts =data;
       });
      }
+
+
+next(){
+  this.isNext = true;
+}
 
      get f() { return this.transferForm.controls; }
      get s() { return this.loanForm.controls; }
@@ -139,6 +147,15 @@ this.offerService.balanceTransfer(input).subscribe(data => {
       
       
   }
+
+
+calculateEmi(emiObj: number){
+  this.emi = emiObj;
+  console.log(this.emi)
+  this.offerService.getEmi(emiObj, this.offer.interestRate, this.offer.tennure).subscribe(data => {
+this.emi=data;
+  });
+}
 
   payDues(){}
 

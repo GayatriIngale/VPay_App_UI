@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class KycService {
+
  
   baseUrl!:string;
 
@@ -30,8 +31,20 @@ export class KycService {
       };      return this.http.post(`${this.baseUrl}/vpay/kyc/addKyc`,data);
   }
   
+  checkKyceCust(mobileNumber: any) {
+   
+    return this.http.get(`${this.baseUrl}/vpay/kyc/checkKyc/${mobileNumber}`,{responseType: 'text'});
+  }
+  checkLoan(mobileNumber: any) {
+   
+    return this.http.get(`${this.baseUrl}/vpay/kyc/checLoan/${mobileNumber}`,{responseType: 'text'});
+  }
 
   get(){
     return this.http.get(`${this.baseUrl}/vpay/login/get`, {responseType: 'text'});
   }
 }
+function responseType(arg0: string, responseType: any, arg2: string): Observable<any> {
+  throw new Error('Function not implemented.');
+}
+

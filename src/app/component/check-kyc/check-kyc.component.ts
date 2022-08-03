@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KycService } from 'src/app/_service/KycService';
 
 @Component({
   selector: 'app-check-kyc',
@@ -6,10 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./check-kyc.component.css']
 })
 export class CheckKycComponent implements OnInit {
+  isKyced: boolean = false;
+  isLoan: boolean = false;
 
-  constructor() { }
+  constructor(private kycService : KycService) {
+
+   }
 
   ngOnInit(): void {
+  this.kycService.checkKyceCust(localStorage.getItem('mobileNumber')).subscribe(data => {
+    if (data == "Success"){
+      this.isKyced = true;
+    }else{
+      this.isKyced = false;
+
+    }
+  })
+
+  this.kycService.checkLoan(localStorage.getItem('mobileNumber')).subscribe(data =>{
+    if (data == "Success"){
+      this.isLoan = true;
+    }
+  })
   }
 
 }

@@ -45,8 +45,17 @@ getAccounts(username:any){
 
 }
 
-getOffersFromScore(uid:any){
+getOffersFromScore1(uid:any){
   // console.log(user);
     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/score/{uid}`);
+ }
+
+ getOffersFromScore(mobileNumber:any){
+  // console.log(user);
+    return this.http.get(`${this.baseUrl}/vpay/offer/saveScore/{mobileNumber}`);
+ }
+ getEmi(amount:any, rate:any, tennure:any){
+  // console.log(user);
+    return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/getEmi/${amount}/${rate}/${tennure}`, {responseType :'text'});
  }
 }

@@ -32,7 +32,7 @@ export class AddKycComponent implements OnInit {
   
 
   submit() {  
-    
+   
 this.kycService.saveKyc(this.kycs, localStorage.getItem('username')).subscribe(data => {
   this.notificationService.showSuccess("Kyc Successfull", "");
   console.log(data)

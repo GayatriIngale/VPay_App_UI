@@ -5,6 +5,7 @@ export class Kyc {
     address ! : String;
     salary ! : number;
 userName ! :  String
+mobileNumber ! : number;
 //   static userName: string | null;
    
 }
