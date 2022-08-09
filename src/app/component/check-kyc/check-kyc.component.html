@@ -1,5 +1,16 @@
-<div class="container">
+<div class="container" *ngIf=" !isKyced">
     <p>you are not completed KYC . Plese click below link to add KYC details</p>
     <a routerLink="/addKYC" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" class="btn btn-link">Add KYC</a>
+
+</div>
+<div class="container" *ngIf="isKyced">
+    <p>Kyc Details Verified.  Please click below link to check available offers for you.</p>
+    <a routerLink="/showOffers" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" class="btn btn-link">Show Offers</a>
+
+</div>
+
+<div class="container" *ngIf="isLoan">
+    <p>You have already taken a loan. Please clear your dues to check offers</p>
+    <a routerLink="/showOffers" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" class="btn btn-link">Show Offers</a>
 
 </div>

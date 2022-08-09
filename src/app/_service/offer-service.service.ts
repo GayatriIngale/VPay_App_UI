@@ -18,13 +18,26 @@ export class OfferServiceService {
    // console.log(user);
      return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/${username}`);
   }
+  getOffers(username : any, mobileNumber:any)  : Observable<any>{
+    console.log("In service");
+   // console.log(user);
+     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/score/${mobileNumber}/${username}`);
+  }
+
+  getBalance(username : any, mobileNumber:any)  : Observable<any>{
+   // console.log(user);
+     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/balance/${mobileNumber}/${username}`);
+  }
+
 
   addToWallet(username : any, amount : any)  : Observable<any>{
    // console.log(user);
    const data = {  
     username: username,  
     amount: amount,  
-  };      return this.http.post(`${this.baseUrl}/vpay/offer/addWallet`, data);
+  };     
+  
+  return this.http.post(`${this.baseUrl}/vpay/offer/addWallet`, data);
   }
 
 getAccounts(username:any){
@@ -40,8 +53,24 @@ getAccounts(username:any){
 
 }
 
-getOffersFromScore(uid:any){
+getOffersFromScore1(uid:any){
   // console.log(user);
     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/score/{uid}`);
  }
+
+ getOffersFromScore(mobileNumber:any){
+  // console.log(user);
+    return this.http.get(`${this.baseUrl}/vpay/offer/saveScore/{mobileNumber}`);
+ }
+ getEmi(amount:any, rate:any, tennure:any){
+  // console.log(user);
+    return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/getEmi/${amount}/${rate}/${tennure}`, {responseType :'text'});
+ }
+
+//createCard(request: any)
+balanceTransferOffer(request:any){
+  return this.http.post(`${this.baseUrl}/vpay/offer/balTransfer`, request,{responseType :'text'});
+
+}
+
 }

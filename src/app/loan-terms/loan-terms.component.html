@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Terms and Conditions</h1>
+<div mat-dialog-content>
+  <p>your existing balance will be cleared and bank representative will connect with you to deliver the card</p>
+  <input type="checkbox" value="False" matInput [(ngModel)]="data.isLoanFlag">I accept terms and conditons
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.isLoanFlag"(click)="accept()" cdkFocusInitial>Accept</button>
+</div>

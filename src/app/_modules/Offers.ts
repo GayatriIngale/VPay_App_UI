@@ -6,4 +6,7 @@
     offer ! : String;
     offerType ! : String;
     offerAmt ! : number;
+    tennure ! :String;
+    emiAmt !: number;
+    totalDue !: number;
 }

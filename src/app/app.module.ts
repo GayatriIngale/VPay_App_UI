@@ -23,8 +23,16 @@ import { FooterComponent } from './footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToastrModule } from 'ngx-toastr';
 import { PayBySavingAccountComponent } from './component/pay-by-saving-account/pay-by-saving-account.component';
+<<<<<<< HEAD
 import { PaySavingAndWalletComponent } from './component/pay-saving-and-wallet/pay-saving-and-wallet.component';
 import { PaymentHistoryComponent } from './component/payment-history/payment-history.component';
+=======
+import { MatTableModule } from '@angular/material/table';
+import { BalanceTermsComponent } from './balance-terms/balance-terms.component';
+import { LoanTermsComponent } from './loan-terms/loan-terms.component'  
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+>>>>>>> f019a1eee1ad16e2d5a27d78e06ef57907623a9b
 
 
 @NgModule({
@@ -46,8 +54,13 @@ import { PaymentHistoryComponent } from './component/payment-history/payment-his
   HeaderComponent,
   FooterComponent,
   PayBySavingAccountComponent,
+<<<<<<< HEAD
   PaySavingAndWalletComponent,
   PaymentHistoryComponent,
+=======
+  BalanceTermsComponent,
+  LoanTermsComponent,
+>>>>>>> f019a1eee1ad16e2d5a27d78e06ef57907623a9b
     
   ],
   imports: [
@@ -59,8 +72,12 @@ import { PaymentHistoryComponent } from './component/payment-history/payment-his
     BrowserAnimationsModule,
     MatDialogModule,
     MatToolbarModule,
-    ToastrModule.forRoot()
-
+    ToastrModule.forRoot(),
+    MatTableModule,
+    MatToolbarModule,
+    MatPseudoCheckboxModule,
+    MatFormFieldModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

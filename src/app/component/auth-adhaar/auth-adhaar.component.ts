@@ -29,16 +29,17 @@ export class AuthAdhaarComponent implements OnInit {
   }
   next(){
 this.isNext=true;
-    this.router.navigateByUrl('/showOffers')
 
   }
 
   nextScore(){
 // Service to get offers from cibil score
-this.offerservice.getOffersFromScore(localStorage.getItem('uid')).subscribe(data => {
+this.offerservice.getOffersFromScore(localStorage.getItem('mobileNumber')).subscribe(data => {
 
-this.offers = data;
+//this.offers = data;
 });
+this.router.navigateByUrl('/showOffers')
+
 }
 
   withoutScore(){
