@@ -1,3 +1,22 @@
 table, th, td {
     border: 1px solid black;
+    width: 50px;
+    column-gap: 40px;
+    padding-right:30px
   }
+
+  form
+{
+    float:left;
+}
+
+/* 
+h2{
+  display:inline;
+  float:left;
+  }
+  h3{
+  display:inline;
+  float:right;
+  } */
+  

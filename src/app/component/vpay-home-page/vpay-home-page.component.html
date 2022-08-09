@@ -4,7 +4,7 @@
 <form style="text-align:center;">
     <h1>Welcome to VPay App</h1>
 </form>
-<form style="text-align:right;">
+<form style="text-align:center;">
 <div>
     
     <h2>Total Due </h2>
@@ -15,7 +15,7 @@
 <br>
 
 <div class="panel-body" style="width: 100%; overflow-x:auto;">
-    <table align="right">
+    <table align="center">
         <thead class="thead-light">
             <tr>
                 <th>cardNumber</th>
@@ -36,12 +36,15 @@
     </table>
     
 </div>
-<a routerLink="/payment"><button class="btn btn-success pull-right" style="background-color: green;">Do Payment</button></a>
+<!-- <a routerLink="/payment"><button class="btn btn-success pull-right" style="background-color: green;">Do Payment</button></a> -->
 
+<button (click)="doPayment()" style="background-color: green;">Pay Now</button>
+<br>
+<br>
 
 </form>
 <form style="text-align:center;">
     <a routerLink="/addCards"><button class="btn btn-success pull-right" style="margin-right: 50px;" > Add Cards</button></a>
-    <a routerLink="/cardList"><button class="btn btn-success pull-right" style="margin-right: 50px;"> View Cards</button></a>
+    <!-- <a routerLink="/cardList"><button class="btn btn-success pull-right" style="margin-right: 50px;"> View Cards</button></a> -->
     <a routerLink="/checkKyc"><button class="btn btn-success pull-right"style="margin-right: 50px;" >checkOffers</button></a>
 </form>

@@ -45,14 +45,18 @@ response: any;
     }
 
     this.loading = true;
-    this.loginService.login1(this.f.username.value, this.f.password.value).subscribe(data => {
+    this.loginService.login(this.f.username.value, this.f.password.value).subscribe(data => {
 this.response = data;
-      if(this.response.message=='success')
+alert(data);
+      if(this.response=='user login successfully..!!')
               {
                // console.log(this.response); 
                 localStorage.setItem('username', this.f.username.value);
                 console.log(this.f.username.value)
                 this.router.navigateByUrl('/VPay')
+              }
+              else{
+                   console.log("not login");
               }
     });
 
@@ -64,7 +68,7 @@ this.response = data;
     //         data => {
     //           this.response=data;
     //           console.log(data);
-    //           this.result=data.message;
+    //           //this.result=data.message;
     //           this.result=data;
 
     //           if(this.response=='success')
@@ -90,6 +94,9 @@ this.response = data;
    
 }
 
+Register(){
+  this.router.navigate(['register']);
+}
 
   get f() { return this.loginForm.controls; }
 

@@ -35,11 +35,16 @@ export class RegisterUserComponent implements OnInit {
   
 
   saveUser() {  
-    console.log(this.users);
+    if(this.addUser.invalid){
+      return;
+    }
+    else{
+      console.log(this.users);
     this.registerService.registerUser(this.users)  
       .subscribe((data: any) => alert(data), (error: any) => console.log(error));  
     this.users= new User();
     this.router.navigate(['login']);
+    }
 
   }
   

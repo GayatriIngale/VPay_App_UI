@@ -3,10 +3,35 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+<body sbgcolor="#800000">
+<form>
+    <!-- <h3>Details of VPay account</h3> -->
+   <div>
+    <h2 style="display: inline; float:left; ">Total Limit: </h2>
+    <h3 style="display: inline; float:right; color: green;">{{this.wallet.totalLimit}}</h3>
+   </div>
+   <div>
+    <h2 style="display: inline; float:left; ">Used Limit: </h2>
+    <h3 style="display: inline; float:right; color: blue;">{{this.wallet.usedLimit}}</h3>
+   </div>
+   <div>
+    <h2 style="display: inline; float:left; ">Current Due: </h2>
+    <h3 style="display: inline; float:right; color: red;">{{this.wallet.currentDue}}</h3>
+   </div>
+   <div>
+    <h2 style="display: inline; float:left; ">Late  Fee: </h2>
+    <h3 style="display: inline; float:right; color: red;">{{this.wallet.lateFee}}</h3>
+   </div>
+   <div>
+    <h2 style="display: inline; float:left;">Due Date: </h2>
+    <h3 style="display: inline; float:right;">{{this.wallet.dueDate}}</h3>
+   </div>
+</form>
+
 <form style="text-align:center;" [formGroup]="cardDetails">
 <div class="main">
-        <h2>Wallet balance</h2>
-    <h2 style="color: red;">{{walletAmount}}</h2> 
+        <h2>Wallet Available Balance</h2>
+    <h2 style="color: green;">{{walletAmount}}</h2> 
         <h2>Total Due </h2>
     <h3 style="color: red;">{{totalDue}}</h3>
     <h2>Minimun Due</h2>
@@ -16,13 +41,15 @@
     <table align="rightS">
         <thead class="thead-light">
             <tr>
-                <th>select</th>
-                <th>cardNumber/LoanNumber</th>
-                <th>bankName</th>
+                <th> select </th>
+                <th> cardNumber/LoanNumber </th>
+                <th> bankName </th>
+                <th> BillingDate</th>
                 <th>totalDue</th>
                 <th>minDue</th>
-               
-                <th>due duration</th>
+               <th>Interest charged</th>
+               <th>OtherCharges</th>
+                <th>Remarks</th>
                 <th>Enter amount</th>
             </tr>
         </thead>
@@ -33,14 +60,17 @@
                 </td>
                 <td>{{card.cardNumber}}</td>
                 <td>{{card.bankName}}</td>
+                <td>{{card.billingDate}}</td>
                 <td>{{card.totalDue}}</td>
                 <td>{{card.minDue}}</td>
+                <td>{{card.interestCharge}}</td>
+                <td>{{card.otherCharges}}</td>
                 <td>{{card.dueDate}}</td>
                 <td><input type="number" id="amount" placeholder="enter amount" [(ngModel)]="card.amount" formControlName="amount"></td>
                 
             </tr>
             <tr>
-                <td colspan="6"> Total</td>
+                <td colspan="9"> Total</td>
                 <td>{{selectedAmount}}</td>
                 
             </tr>
@@ -51,15 +81,17 @@
 
 
 
+
     
 </div>
 <br>
-<button class="btn btn-primary"   style="margin-right: 50px;" (click)="openDialog()">NetBanking</button>&nbsp;
+<button class="btn btn-primary"   style="margin-right: 50px;" (click)="openDialog()">I Pay</button>&nbsp;
 
-<button class="btn btn-primary"  (click)="clearByWallet( )" style="margin-right: 50px;">VPay Wallet</button>&nbsp;
+<button class="btn btn-primary"  (click)="clearByWallet( )" style="margin-right: 50px;">Pay For Me</button>&nbsp;
 
-<button class="btn btn-primary"   style="margin-right: 50px;">Saving+VPayWallet</button>&nbsp;
+<button class="btn btn-primary"   style="margin-right: 50px;" (click)="openDialogTogether()">Let's Pay Together</button>&nbsp;
 
 </form>
+</body>
 
 

@@ -7,11 +7,15 @@ export class CardDetails {
     totalDue !: number;
     minDue !: number;
     flag !: CharacterData;
-    billingDate ! : Date;
+    // billingDate ! : Date;
     mobileNumber !: number;
     isSelected! : boolean;
     amount ! : number;
     dueDate !: string;
+    interestCharge ! :number;
+    billingDate !: Date;
+    otherCharges !: number;
+
 }
 
 

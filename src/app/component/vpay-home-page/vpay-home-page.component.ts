@@ -36,6 +36,7 @@ export class VPayHomePageComponent implements OnInit {
       else{
         console.log(" null");
         this.totalDue= 0;
+        localStorage.setItem('totalDue', this.totalDue)
       }
       })
   
@@ -46,6 +47,7 @@ export class VPayHomePageComponent implements OnInit {
         }
         else{
           this.minDue = 0;
+          localStorage.setItem('minDue', this.minDue);
         }
        })
   }
@@ -66,6 +68,18 @@ export class VPayHomePageComponent implements OnInit {
 }
   addCards(){
        this.router.navigate(['addCards']);
+  }
+
+  doPayment(){
+
+    
+    if( this.cards.length<=0){
+       alert("Please add card");
+    }
+    else{
+      this.router.navigate(['payment']);
+    }
+    
   }
 
 }

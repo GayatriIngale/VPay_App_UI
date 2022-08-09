@@ -23,6 +23,8 @@ import { FooterComponent } from './footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToastrModule } from 'ngx-toastr';
 import { PayBySavingAccountComponent } from './component/pay-by-saving-account/pay-by-saving-account.component';
+import { PaySavingAndWalletComponent } from './component/pay-saving-and-wallet/pay-saving-and-wallet.component';
+import { PaymentHistoryComponent } from './component/payment-history/payment-history.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { PayBySavingAccountComponent } from './component/pay-by-saving-account/p
   HeaderComponent,
   FooterComponent,
   PayBySavingAccountComponent,
+  PaySavingAndWalletComponent,
+  PaymentHistoryComponent,
     
   ],
   imports: [

@@ -5,14 +5,33 @@
         <span aria-hidden="true">&times;</span>
       </button>
     <h2>Enter your acount details</h2>
+
+    <!-- <h3>SelectedAmount</h3>
+    <h4></h4> -->
+
+    <!-- <div>
+      <h2 style="display: inline; float:left;">SelectedAmount: </h2>
+      <h3 style="display: inline; float:left; color: white;">{{ this.select}}</h3>
+     </div> -->
+
+     <label>Total amount to pay <span>: {{this.select}}</span></label>
+     <br>
 <!--     
     <label for="Account No">Account No<span style="color:red"> *</span></label>
         <input type="number" class="form-control" id="accountNo" placeholder="Enter Account No"  formControlName="accountNo"  >
       -->
 
+
+      <label for="walletAmount" >walletAmount<span style="color:red"> *</span></label>
+      <input type="number" class="form-control" id="walletAmount" placeholder="Amount pay through wallet" [(ngModel)]="account.walletAmount" formControlName="walletAmount" name="wallet" >
+    
+      <label for="savingAmount">savingAmount<span style="color:red"> *</span></label>
+      <input type="number" class="form-control" id="savingAmount" placeholder="Amount pay through saving account" [(ngModel)]="account.savingAmount" formControlName="savingAmount"  >
+    
       <label for="accountNo">accountNo<span style="color:red"> *</span></label>
       <input type="number" class="form-control" id="accountNo" placeholder="accountNo" [(ngModel)]="account.accountNo" formControlName="accountNo"  >
     
+
 
       
       <label for="pin">Password<span style="color:red"> *</span></label>

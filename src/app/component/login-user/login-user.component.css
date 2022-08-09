@@ -1,0 +1,17 @@
+/* .masthead {
+    height: auto;
+    min-height: 100vh;
+    background-image: url("src\assets\Images\Vpaylogin.jpg");
+    background-size: cover;
+    overflow-x: auto;
+    background-position: center;
+} */
+
+.inventory-body {
+    height: auto;
+    min-height: 120vh;
+    background-image: url("src\assets\Images\NewLogin.jpg");
+    background-size: cover;
+    overflow-x: auto;
+    background-position: center;
+    }

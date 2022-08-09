@@ -6,6 +6,9 @@ import { CardService } from 'src/app/_service/card.service';
 import { PaymentService } from 'src/app/_service/payment.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PayBySavingAccountComponent } from '../pay-by-saving-account/pay-by-saving-account.component';
+import { Wallet } from 'src/app/_module/wallet';
+import { PaySavingAndWalletComponent } from '../pay-saving-and-wallet/pay-saving-and-wallet.component';
+import { PaymentHistoryComponent } from '../payment-history/payment-history.component';
 
 
 @Component({
@@ -29,6 +32,8 @@ export class PaymentComponent implements OnInit {
   cardDetails: any;
   selectedAmount = 0;
 
+  wallet !: any;
+
 
   ngOnInit(): void {
 
@@ -47,13 +52,28 @@ export class PaymentComponent implements OnInit {
       // data.cardNumber.replace(/.(?=.{4})/g, "#");
       // cc.replace(/.(?=.{4})/g, "#");
       this.cards = data;
+      console.log(data);
      })
 
      this.paymentService.getWalletAmount(this.userName).subscribe(data=>{
-      this.walletAmount=data;
+
+      if(this.walletAmount !=" "){
+        this.walletAmount=data;
+      }
+      else
+      this.walletAmount=0;
+     
      })
 
+     this.paymentService.getWallet(this.userName).subscribe(data =>{
+      this.wallet = data;
+      console.log("dueDate by wallet"+this.wallet.dueDate);
+     })
+
+
+
      this.isChecked = false;
+
 
   }
 
@@ -81,6 +101,12 @@ export class PaymentComponent implements OnInit {
     this.amountList.push(card.amount);
     console.log("amount list:"+this.amountList);
     console.log("int array: "+this.list);
+
+    localStorage.setItem("lists", JSON.stringify(this.list));
+    localStorage.setItem("amounts", JSON.stringify(this.amountList));
+    localStorage['answer'] = JSON.stringify(this.selectedAmount);
+    let saved = JSON.parse(localStorage['answer'])
+    localStorage.setItem('selectedvalue', saved);
   }
   else{
   //  alert("unchecked");
@@ -96,8 +122,13 @@ export class PaymentComponent implements OnInit {
 });
  
   console.log("unchecked");
+
+  // localStorage.setItem('selectedAmount',this.selectedAmount.toString || null);
+  localStorage.setItem("selectedAmount", JSON.stringify(this.selectedAmount));
  
   }
+
+ 
  
     
     
@@ -112,12 +143,19 @@ clearByWallet(){
     }
     else{
            if(!!this.amountList  && this.amountList.length==0){
-                 alert("please select amount");
+                 alert("please select card and amount");
            }else{
            
-            this.paymentService.check(this.list,this.amountList, this.selectedAmount).subscribe(data=>
+            this.paymentService.check(this.list,this.amountList, this.selectedAmount,"Pay For Me").subscribe(data=>
             {
               alert(data);
+              localStorage.setItem("referenceNo",data)
+
+              this.dialogRef.open(PaymentHistoryComponent,{
+                // data : {cards :this.amountList, ids : this.list, amount: this.selectedAmount}
+                
+               })
+
             })
            }
 
@@ -157,10 +195,57 @@ getUserDetails(){
 }
 
 openDialog(){
-   this.dialogRef.open(PayBySavingAccountComponent);
+
+  if(!!this.amountList  && this.amountList.length==0){
+    alert("please select card and amount");
+}
+   else{
+    this.dialogRef.open(PayBySavingAccountComponent,{
+      data : {cards :this.amountList, ids : this.list, amount: this.selectedAmount}
+      
+     }).afterClosed().subscribe(response => {
+          console.log(response.cars,response.ids, response.list, response.amount)
+        })
+   }
+   
+
+      
 }
 
+openDialogTogether(){
 
+  if(!!this.amountList  && this.amountList.length==0){
+    alert("please select card and amount");
+}
+else{
+
+  this.dialogRef.open(PaySavingAndWalletComponent,{
+    data : {cards :this.amountList, ids : this.list, amount: this.selectedAmount}
+    
+   }).afterClosed().subscribe(response => {
+        console.log(response.cars,response.ids, response.list, response.amount)
+      })
+}
+
+  
+
+     
+}
+// openDialog() {
+//   this.dialog.open(AddChargesComponent, {
+//     data: { name: this.name, surname:this.surname, email: this.email, mobile: this.mobile} 
+//   }).afterClosed().subscribe(response => {
+//     console.log(response.name,response.surname, response.email, response.mobile )
+//   })
+// }
+
+// openDialog(t1) {
+//   const dialogRef = this.dialog.open(NameComponent, {
+//     data: { t1 }
+//   });
+//   dialogRef.afterClosed().subscribe(data => {
+
+// }
 }
 
 

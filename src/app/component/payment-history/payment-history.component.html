@@ -1,0 +1,45 @@
+
+<div class="panel-body" style="width: 100%; overflow-x:auto;">
+    <button  mat-button mat-dialog-close mat-flat-button style="margin-left:550px; color: red;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <h2>Transaction Confermation</h2>
+    <h3 style="display: inline; float:right;">Date:  {{date}}</h3>
+    <!-- <h3 style="display: inline; float:right;" >{{date}}</h3>
+    -->
+    
+    <br>
+    <br>
+    <table align="right">
+        <thead class="thead-light">
+           
+            <tr>
+              
+                
+                <th>cardNumber   </th>
+                <th>Amount   </th>
+                <th>Reference No   </th>
+                <th>Payment Type  </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Payment of payments ">
+                <td>{{Payment.cardNo}}</td>
+                <td>{{Payment.subAmount}}</td>
+                <td>{{Payment.transactionReferenceNo}}</td>
+                <td>{{Payment.paymentType}}</td>
+               
+            </tr>
+        </tbody>
+       
+        
+        
+    </table>
+
+   
+
+
+    
+</div>
+
