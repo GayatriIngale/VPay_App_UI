@@ -208,9 +208,9 @@ confirm(){
     }
 
     this.offerService.balanceTransferOffer(data).subscribe((result: any) => {
-
-      this.notificationService.showSuccess("Your dues hads been cleard. You will get the card in next 3 to 4 working days", "");
-
+if(result==="Success"){
+      this.notificationService.showSuccess("Congratulations! Balance transfer request is successfull. New issuer will get in contact with you and issue you a new card in next 7 to 8 days.", "");
+}
     });
      }
 }

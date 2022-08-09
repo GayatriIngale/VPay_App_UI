@@ -69,7 +69,7 @@ getOffersFromScore1(uid:any){
 
 //createCard(request: any)
 balanceTransferOffer(request:any){
-  return this.http.post(`${this.baseUrl}/vpay/offer/balTransfer`, request);
+  return this.http.post(`${this.baseUrl}/vpay/offer/balTransfer`, request,{responseType :'text'});
 
 }
 
