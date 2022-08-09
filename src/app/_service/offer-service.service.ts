@@ -24,12 +24,20 @@ export class OfferServiceService {
      return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/score/${mobileNumber}/${username}`);
   }
 
+  getBalance(username : any, mobileNumber:any)  : Observable<any>{
+   // console.log(user);
+     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/balance/${mobileNumber}/${username}`);
+  }
+
+
   addToWallet(username : any, amount : any)  : Observable<any>{
    // console.log(user);
    const data = {  
     username: username,  
     amount: amount,  
-  };      return this.http.post(`${this.baseUrl}/vpay/offer/addWallet`, data);
+  };     
+  
+  return this.http.post(`${this.baseUrl}/vpay/offer/addWallet`, data);
   }
 
 getAccounts(username:any){
@@ -58,4 +66,11 @@ getOffersFromScore1(uid:any){
   // console.log(user);
     return this.http.get(`${this.baseUrl}/vpay/offer/getOffers/getEmi/${amount}/${rate}/${tennure}`, {responseType :'text'});
  }
+
+//createCard(request: any)
+balanceTransferOffer(request:any){
+  return this.http.post(`${this.baseUrl}/vpay/offer/balTransfer`, request);
+
+}
+
 }

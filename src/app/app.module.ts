@@ -23,6 +23,11 @@ import { FooterComponent } from './footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToastrModule } from 'ngx-toastr';
 import { PayBySavingAccountComponent } from './component/pay-by-saving-account/pay-by-saving-account.component';
+import { MatTableModule } from '@angular/material/table';
+import { BalanceTermsComponent } from './balance-terms/balance-terms.component';
+import { LoanTermsComponent } from './loan-terms/loan-terms.component'  
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -44,6 +49,8 @@ import { PayBySavingAccountComponent } from './component/pay-by-saving-account/p
   HeaderComponent,
   FooterComponent,
   PayBySavingAccountComponent,
+  BalanceTermsComponent,
+  LoanTermsComponent,
     
   ],
   imports: [
@@ -55,8 +62,12 @@ import { PayBySavingAccountComponent } from './component/pay-by-saving-account/p
     BrowserAnimationsModule,
     MatDialogModule,
     MatToolbarModule,
-    ToastrModule.forRoot()
-
+    ToastrModule.forRoot(),
+    MatTableModule,
+    MatToolbarModule,
+    MatPseudoCheckboxModule,
+    MatFormFieldModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

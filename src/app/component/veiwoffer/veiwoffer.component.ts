@@ -1,9 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BalanceTermsComponent } from 'src/app/balance-terms/balance-terms.component';
+import { LoanTermsComponent } from 'src/app/loan-terms/loan-terms.component';
 import { CardDetails } from 'src/app/_modules/card-details';
 import { CardService } from 'src/app/_service/card.service';
+import { NotificationService } from 'src/app/_service/notification.service';
 import { OfferServiceService } from 'src/app/_service/offer-service.service';
+
+export interface DialogData {
+  isBalanceFlag: string;
+  isLoanFlag: boolean;
+}
+
 
 @Component({
   selector: 'app-veiwoffer',
@@ -15,18 +25,21 @@ export class VeiwofferComponent implements OnInit {
 accounts:any;
 bankName: any;
 offerAmt: any;
+  isBalanceFlag: String = "False";
+  isLoanFlag: boolean = false;
   isbalaceOffer: boolean = false;
   loanForm: any;
   interestRate: any;
   selectedAmount: any;
   list: any;
   amountList: any;
-  cards !: CardDetails[];
+  //cards !: CardDetails[];
   mobileNumber : any;
   isNext: boolean = false;
   emi: any;
+  isConfirm: boolean = false;
   
-  constructor(private formBuilder : FormBuilder, private router : Router, private offerService: OfferServiceService, private cardService: CardService ) {
+  constructor(private dialogRef : MatDialog,   private formBuilder : FormBuilder, private router : Router, private offerService: OfferServiceService, private cardService: CardService , private notificationService: NotificationService) {
      // should log out 'bar'
      const data = this.router.getCurrentNavigation()?.extras;
     
@@ -51,7 +64,8 @@ offerAmt: any;
   });
 
   this.loanForm = this.formBuilder.group({
-    document: ['', Validators.required],
+    document1: ['', Validators.required],
+    document2: ['', Validators.required],
     amount: ['', Validators.required],
     otp:['', Validators.required],
     employeeId:['', Validators.required],
@@ -68,11 +82,10 @@ offerAmt: any;
        })
        this.mobileNumber = localStorage.getItem("mobileNumber");
 
-       this.cardService.listOfCards(this.mobileNumber).subscribe((data: any) =>{
-        // data.cardNumber.replace(/.(?=.{4})/g, "#");
-        // cc.replace(/.(?=.{4})/g, "#");
-        this.cards = data;
-       })
+       
+
+
+
      }
   
      onSubmit(){
@@ -92,6 +105,7 @@ this.offerService.balanceTransfer(input).subscribe(data => {
 
      }
      onSubmitLoan(){
+       this.isLoanFlag= false;
       const input = {
         username:localStorage.getItem('username'),
         bankName:this.bankName,
@@ -104,6 +118,7 @@ this.offerService.balanceTransfer(input).subscribe(data => {
       };
       this.offerService.loanTransfer(input).subscribe(data => {
         // this.accounts =data;
+        this.notificationService.showSuccess("SuucessFull","");
       });
      }
 
@@ -157,6 +172,75 @@ this.emi=data;
   });
 }
 
-  payDues(){}
+termsForBalance():void{
+    const dialogRef1=  this.dialogRef.open(BalanceTermsComponent, {
+      width: '500px',
+      height: '500px',
+      data: {isBalanceFlag: this.isBalanceFlag},
+
+    });
+
+// this.dialogRef.afterAllClosed.subscribe
+
+    dialogRef1.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ####################################3');
+      this.isBalanceFlag = result;
+      console.log(this.isBalanceFlag);
+if(this.isBalanceFlag){
+      this.isConfirm = true;
+}
+     
+
+    });
+
+
+  }
+
+
+confirm(){
+  if(this.isBalanceFlag){
+    const data = {
+     'mobile': localStorage.getItem('mobileNumber'),
+     'amount':this.offer.offerAmt,
+     'bankname': this.offer.bankName,
+     'cardNumber': this.offer.cardNumber,
+     'status':"In Progress"
+    }
+
+    this.offerService.balanceTransferOffer(data).subscribe((result: any) => {
+
+      this.notificationService.showSuccess("Your dues hads been cleard. You will get the card in next 3 to 4 working days", "");
+
+    });
+     }
+}
+
+  loanTerms(){
+
+
+
+    const dialogRef1=  this.dialogRef.open(LoanTermsComponent, {
+      width: '500px',
+      height: '500px',
+      data: {isLoanFlag: this.isLoanFlag},
+
+    });
+
+// this.dialogRef.afterAllClosed.subscribe
+
+    dialogRef1.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ####################################3');
+      this.isLoanFlag = result;
+      console.log(this.isLoanFlag);
+     
+
+    });
+
+
+
+
+
+
+  }
 
 }

@@ -1,74 +1,52 @@
-<div ><p >
-Offer Description:{{offer.offer}} 
-</p>
+<div>
+    <p>
+        Offer Description:{{offer.offer}}
+    </p>
 </div>
 <button type="submit" class="btn btn-success" (click)="apply()">Click here to apply offer</button>
 <div *ngIf="isApplyOffer && isbalaceOffer">
-
-    <!-- <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="amount">Account: </label>
-            <select formControlName="accountNumber">
-                <option [ngValue]="null" disabled>Select account</option>
-                <option *ngFor="let account of accounts" [ngValue]="account">{{account}}</option>
-              </select>
-      </div>
-      <div class="form-group">
-        <label for="amount">Amount: </label>
-        <input id="amount" type="text" formControlName="amount">
-        </div>
-        <div class="form-group">
-        <button type ="submit" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-            Submit
-        </button>  
-        <button  type = "reset" class="btn btn-primary" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-            Cancel
-        </button>  
-        </div>
-      </form> -->
-
-
-      <div class="panel-body" style="width: 100%; overflow-x:auto;">
-        <table align="rightS">
+    <div class="panel-body" style="width: 100%; overflow-x:auto;">
+        <!-- <table align="rightS">
             <thead class="thead-light">
                 <tr>
-                    <th>select</th>
-                    <th>cardNumber/LoanNumber</th>
-                    <th>bankName</th>
-                    <th>totalDue</th>
-                    <th>minDue</th>
-                   
-                    <th>due duration</th>
-                    <th>Enter amount</th>
+                    <th>Card Number</th>
+                    <th>Total Due</th>
+                    <th>Offer from</th>
+                    <th>Offer Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let card of cards ">
-                    <td>
-                        <input type="checkbox" value="" (click)="getRow(card, $event)"/> 
-                    </td>
+                    
                     <td>{{card.cardNumber}}</td>
-                    <td>{{card.bankName}}</td>
                     <td>{{card.totalDue}}</td>
-                    <td>{{card.minDue}}</td>
-                    <td>{{card.dueDate}}</td>
-                    <td><input type="number" id="amount" placeholder="enter amount" [(ngModel)]="card.amount" formControlName="amount"></td>
+                    <td>{{card.bankName}}</td>
+                    <td>{{card.offer}}</td>
+                    
                     
                 </tr>
-                <tr>
-                    <td colspan="6"> Total</td>
-                    <td>{{selectedAmount}}</td>
-                </tr>
+               
             </tbody>
             
             
-        </table>
-    
-    
-    
-        
+        </table> -->
+
+
+
+
     </div>
-    <button class="btn btn-primary"   style="margin-right: 50px;" (click)="payDues()">Pay Due</button>&nbsp;
+    
+    <div>
+        <span *ngIf="!isConfirm"> Please accept terms and conditons</span>
+        <span *ngIf="isConfirm"> We will pay your dues and you will get the new card within 3 to 4 working days. Please confirm to continue.</span>
+
+        <br>
+        <button *ngIf="!isConfirm" class="btn btn-success" style="margin-right: 50px;" (click)="termsForBalance()">check terms and conditions</button>
+        <button *ngIf="isConfirm" class="btn btn-success" style="margin-right: 50px;" (click)="confirm()">Confirm</button>
+
+       
+        <button class="btn btn-success" style="margin-right: 50px;">Cancel</button>&nbsp;
+    </div>
 
 </div>
 
@@ -77,57 +55,93 @@ Offer Description:{{offer.offer}}
 
 <div *ngIf="isApplyOffer && !isbalaceOffer" class="container">
 
-    <form [formGroup]="loanForm" >
+    <form [formGroup]="loanForm">
 
-<div class="employeeDetaoils" *ngIf="!isNext" style="margin-top: 20px;">
-        <div class="form-group">
-            <label>Please enter employment details </label>
+        <div class="employeeDetaoils" *ngIf="!isNext" style="margin-top: 20px;">
+            <div class="form-group">
+                <label>Please enter employment details </label>
+            </div>
+
+
+            <div class="form-group">
+                <label for="employerName">Employer Name *: </label>
+                <br>
+                <input id="employerName" type="text" formControlName="employerName" required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="employeeId">Employee EmailId *: </label>
+                <br>
+                <input id="employeeId" type="text" formControlName="employeeId" required>
             </div>
             <div class="form-group">
-            <label for="employerName">Employer Name : </label>
-            
-            <input id="employerName" style="margin-left:100px;" type="text" formControlName="employerName">
+                <label for="otp">Please enter OTP sent on your<br> registered email Id *: </label>
+                <br>
+                <input id="otp" type="text" formControlName="otp" required>
             </div>
             <div class="form-group">
-                <label for="employeeId">Employee Id : </label>
-                <input id="employeeId"style="margin-left:120px;" type="number" formControlName="employeeId">
-                </div>
-                <div class="form-group">
-                    <label for="otp">Please enter OTP sent on your<br> registered mobile number: </label>
-                    <input id="otp" type="text" formControlName="otp">
-                 </div>
-        <div class="form-group">
-            <label for="document">Please upload Documents for verification: </label>
-            <input id="document" type="file" formControlName="document">
-        </div>
-        <button class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;" (click)="next()">
-            Next
-        </button>  
-</div>
-<div class="loadDetails" *ngIf="isNext" style = "margin-top: 20px;">
-        <div class="form-group" style="margin-top: 20px;">
-            <label for="tennure">Please submit below details to proceed </label>
+                <label for="document">Please upload Documents for verification: </label>
             </div>
-        <div class="form-group">
-            <label for="tennure">tennure:{{offer.tennure}} </label>
+            <div class="form-group">
+                <label for="document1">Document 1: </label>
+
+                <input id="document1" type="file" formControlName="document1">
+            </div>
+            <div class="form-group">
+                <label for="document2">Document 2: </label>
+
+                <input id="document2" type="file" formControlName="document2">
+            </div>
+            <button class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;"
+                (click)="next()">
+                Next
+            </button>
+            </div>
+        <div class="loadDetails" *ngIf="isNext" style="margin-top: 20px;">
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="tennure">Please submit below details to proceed </label>
             </div>
 
-      <div class="form-group">
-        <label for="amount">Enter Amount upto available limit: </label>
-        <input id="amount"  (ngModelChange)="calculateEmi($event)" type="text" formControlName="amount">
-        </div>
 
-        <div class="form-group">
-            <label for="tennure">Monthly EMI will be :{{emi}} </label>
+
+
+
+            <div class="form-group">
+                <label for="tennure">tennure:{{offer.tennure}} </label>
             </div>
-        <div class="form-group">
-        <button type ="submit"(click)="onSubmitLoan()" class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-            Submit
-        </button>  
-        <button  type = "reset" class="btn btn-success" style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
-            Cancel
-        </button>  
+
+            <div class="form-group">
+                <label for="tennure">Approved Limit:{{offer.offerAmt}} </label>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Enter Amount upto aproved limit: </label>
+                <br>
+                <input id="amount" (ngModelChange)="calculateEmi($event)" type="text" formControlName="amount">
+            </div>
+
+            <div class="form-group">
+                <label for="tennure">Monthly EMI will be :{{emi}} </label>
+            </div>
+            <div class="form-group">
+                <button *ngIf="!isLoanFlag" type="submit" (click)="loanTerms()" class="btn btn-success"
+                    style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+                    Terms and Conditions
+                    </button>
+                    <button *ngIf="isLoanFlag" type="submit" (click)="onSubmitLoan()" class="btn btn-success"
+                        style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+                        Submit
+                    </button>
+                    <button type="reset" class="btn btn-success"
+                        style="max-width: 350px; margin-left: 0.2cm; margin-bottom: 0.7cm;">
+                        Cancel
+                    </button>
+                    </div>
+
+
         </div>
-        </div>
-      </form>
+    </form>
 </div>

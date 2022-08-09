@@ -9,36 +9,83 @@
 
 <div *ngIf="isBalance" >
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-          <th>Bank</th>
-          <th>Offer</th>
-          
+  <table mat-table [dataSource]="offers" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="Card Number">
+      <th mat-header-cell *matHeaderCellDef> Card Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.cardNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Total Due">
+      <th mat-header-cell *matHeaderCellDef> Total Due </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalDue}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Offer from">
+      <th mat-header-cell *matHeaderCellDef> Offer from </th>
+      <td mat-cell *matCellDef="let element"> {{element.bankName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Offer Description">
+      <th mat-header-cell *matHeaderCellDef> Offer Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.offer}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Select">
+      <th mat-header-cell *matHeaderCellDef> Select </th>
+
+      <td *matCellDef="let element">
+         <button type="button" (click)="onSelect(element)" class="btn btn-success">Apply</button></td>
+    </ng-container>
+
+    <!-- <tr>
+            <th>Card Number</th>
+            <th>Total Due</th>
+            <th>Offer from</th>
+            <th>Offer Description</th>
         </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let offer of offers">
-
-      <tr *ngIf="offer.offerType ==='balance transfer' ">
-        <td>{{ offer.bankName }}</td>
-        <td>{{ offer.offerType }}
-
+        <tr *ngFor="let offer of offers">
+            
+            <td>{{offer.cardNumber}}</td>
+            <td>{{offer.totalDue}}</td>
+            <td>{{offer.bankName}}</td>
+            <td>{{offer.offer}}</td>
+            <td>       <button type="button" (click)="onSelect(offer)" class="btn btn-success">View Offer</button>
             </td>
-         
-         <td>       <button type="button" (click)="onSelect(offer)" class="btn btn-success">View Offer</button>
-            </td>
-        
-      </tr>
-    </ng-container>
+            
+        </tr>
 
-    </tbody>
+    </tbody> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div> 
 
 <div *ngIf="isLoan" >
+  <table mat-table [dataSource]="offers" class="mat-elevation-z8">
+    <ng-container matColumnDef="Offer From">
+      <th mat-header-cell *matHeaderCellDef> Offer From </th>
+      <td mat-cell *matCellDef="let element"> {{element.bankName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Offer">
+      <th mat-header-cell *matHeaderCellDef> Offer </th>
+      <td mat-cell *matCellDef="let element"> {{element.offerType}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Select">
+      <th mat-header-cell *matHeaderCellDef> Select </th>
 
-  <table class="table table-striped">
+      <td *matCellDef="let element">
+         <button type="button" (click)="onSelect(element)" class="btn btn-success">View Offer</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+
+    <tr  mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+  <!-- <table class="table table-striped">
       <thead>
           <tr>
             <th>Bank</th>
@@ -59,8 +106,7 @@
               </td>
           
         </tr>
-      </ng-container>
+      </ng-container> -->
   
-      </tbody>
     </table>
   </div> 

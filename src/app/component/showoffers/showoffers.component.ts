@@ -13,21 +13,14 @@ export class ShowoffersComponent implements OnInit {
 offers: Offers[] = [];
   isBalance: boolean = false;
   isLoan: boolean = false;
+  displayedColumns: string[] = ['Card Number', 'Offer from', 'Total Due', 'Offer Description', 'Select'];
+  displayedColumns1: string[] = ['Offer From', 'Offer', 'Select'];
 
   constructor(private offerService: OfferServiceService, private router: Router) { }
 
   ngOnInit(): void {
     
-    this.offerService.getOffers(localStorage.getItem('username'), localStorage.getItem('mobileNumber')).subscribe(
-      // (data: any) => console.log("Data##"+data.json()), (error: any) => console.log(error))
-      data =>
-      {
-    this.offers=data;
-    // localStorage.setItem('offers', this.offers);
-  
-      console.log(data.length+"length");
-      },(error: any) => console.log(error),
-      );
+   
 
   }
 
@@ -39,8 +32,30 @@ offers: Offers[] = [];
 balance(){
 this.isBalance = true;
 this.isLoan = false;
+this.offerService.getBalance(localStorage.getItem('username'), localStorage.getItem('mobileNumber')).subscribe(
+
+data =>{
+  this.offers=data;
+  // localStorage.setItem('offers', this.offers);
+
+    console.log(data.length+"length");
+    },(error: any) => console.log(error),
+);
 }
 loan(){
+
+
+
+  this.offerService.getOffers(localStorage.getItem('username'), localStorage.getItem('mobileNumber')).subscribe(
+    // (data: any) => console.log("Data##"+data.json()), (error: any) => console.log(error))
+    data =>
+    {
+  this.offers=data;
+  // localStorage.setItem('offers', this.offers);
+
+    console.log(data.length+"length");
+    },(error: any) => console.log(error),
+    );
 
   this.isLoan = true;
   this.isBalance = false;
