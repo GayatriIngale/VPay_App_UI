@@ -64,7 +64,13 @@
   </table>
 </div> 
 
-<div *ngIf="isLoan" >
+<div *ngIf="loanExists && !isBalance" >
+
+  <p>You have already taken a loan. Please clear your dues to check offers</p>
+</div>
+
+
+<div *ngIf="isLoan && !loanExists" >
   <table mat-table [dataSource]="offers" class="mat-elevation-z8">
     <ng-container matColumnDef="Offer From">
       <th mat-header-cell *matHeaderCellDef> Offer From </th>

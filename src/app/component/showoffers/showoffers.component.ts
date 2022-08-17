@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Offers } from 'src/app/_modules/Offers';
+import { KycService } from 'src/app/_service/KycService';
 import { OfferServiceService } from 'src/app/_service/offer-service.service';
 
 @Component({
@@ -15,8 +16,9 @@ offers: Offers[] = [];
   isLoan: boolean = false;
   displayedColumns: string[] = ['Card Number', 'Offer from', 'Total Due', 'Offer Description', 'Select'];
   displayedColumns1: string[] = ['Offer From', 'Offer', 'Select'];
+  loanExists: boolean = false;
 
-  constructor(private offerService: OfferServiceService, private router: Router) { }
+  constructor(private offerService: OfferServiceService, private kycService: KycService, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -43,9 +45,16 @@ data =>{
 );
 }
 loan(){
+  this.isLoan = true;
+  this.isBalance = false;
+  this.kycService.checkLoan(localStorage.getItem('mobileNumber')).subscribe(data =>{
+    if (data == "Success"){
+      this.loanExists = true;
+    }
+  })
 
 
-
+if(!this.loanExists){
   this.offerService.getOffers(localStorage.getItem('username'), localStorage.getItem('mobileNumber')).subscribe(
     // (data: any) => console.log("Data##"+data.json()), (error: any) => console.log(error))
     data =>
@@ -57,7 +66,10 @@ loan(){
     },(error: any) => console.log(error),
     );
 
-  this.isLoan = true;
-  this.isBalance = false;
+  
 }
 }
+}
+ 
+
+

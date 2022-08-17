@@ -5,3 +5,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~bootstrap/dist/css/bootstrap.css";  
 @import '~@angular/material/prebuilt-themes/purple-green.css';
+
+  
+:root {
+    --fontColor:white;
+  }
+  
+  .theme-dark {
+    --fontColor: white;
+  }
